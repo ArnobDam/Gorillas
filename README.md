@@ -22,6 +22,7 @@ In addition, this project will include:
 
 ## Wireframe:
 
+- [Wireframe Preview](https://wireframe.cc/pro/pp/89fcc9894600345)
 
 ## Technologies & Libraries:
 
@@ -35,15 +36,15 @@ The only other resources used are sprites imported from publicly available libra
 
 ## Implementation Timeline 
 
-Friday afternoon & weekend: Setup project, get webpack up and running. Create all necessary classes, including gorilla, banana, landscape/tree and possibly boundary. Create and load basic game page, including the two gorillas in their proper positions and randomly generate. Implement projectile motion code in the banana class. 
+- Friday afternoon & weekend: Setup project, get webpack up and running. Create all necessary classes, including gorilla, banana, landscape/tree and possibly boundary. Create and load basic game page, including the two gorillas in their proper positions and randomly generate. Implement projectile motion code in the banana class. 
 
-Monday: Create the two gauges for throwing the bananas. Hook up the banana to each gorillas.
+- Monday: Create the two gauges for throwing the bananas. Hook up the banana to each gorillas.
 
-Tuesday: Create turns, with logic that switches turns when the banana collides with the landscape, boundary, or other banana.
+- Tuesday: Create turns, with logic that switches turns when the banana collides with the landscape, boundary, or other banana.
 
-Wednesday: Create instructions, a game over page, and nice title logo. Update all graphics and add sprites.
+- Wednesday: Create instructions, a game over page, and nice title logo. Update all graphics and add sprites.
 
-Thursday: Complete anything missing from previous days' goals. If completed, add music and a mute button, lives, and funcionality to increase game difficulty (stated above) as the opponent's lives decrease.
+- Thursday: Complete anything missing from previous days' goals. If completed, add music and a mute button, lives, and funcionality to increase game difficulty (stated above) as the opponent's lives decrease.
 
 
 
