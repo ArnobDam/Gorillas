@@ -1,4 +1,4 @@
-# Gorillas (JS-Project)
+# Gorillas (JavaScript-Project)
 
 ## Background
 
