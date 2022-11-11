@@ -1,5 +1,10 @@
+#content_and_links {
+    display: flex;
+    align-items: flex-end;
+}
+
 #content {
-    max-width: 70%;
+    width: 65%;
     margin: auto;
 }
 
@@ -17,8 +22,18 @@ h1 {
     border: 1px solid black;
 }
 
+
 #game-window {
     height: 375px;
+    // width: 100%;
     border: 1px solid black;
     border-top: 0px;
+}
+
+#links {
+    // margin-left: 10px;
+    // padding-left: 10px;
+    height: 100px;
+    width: 50px;
+    border: 1px solid black;
 }
