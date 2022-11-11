@@ -58,11 +58,12 @@ table {
 #content_and_links {
   display: flex;
   align-items: flex-end;
+  justify-content: center;
+  margin: auto;
 }
 
 #content {
   width: 65%;
-  margin: auto;
 }
 
 h1 {
@@ -86,7 +87,7 @@ h1 {
 }
 
 #links {
-  height: 100px;
+  height: 200px;
   width: 50px;
   border: 1px solid black;
 }
