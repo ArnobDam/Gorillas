@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
     banana1.draw(context);
     banana2.draw(context);
 
+
     // setInterval(function () {
     //     context.clearRect(0, 0, canvasEle.width, canvasEle.height);
 
@@ -41,12 +42,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // }, 10);
 
     window.requestAnimationFrame(function () {
-        context.clearRect(0, 0, canvasEle.width, canvasEle.height);
-
-        banana1.move(context);
         banana1.draw(context);
 
-        banana2.move(context);
         banana2.draw(context);
     })
 })

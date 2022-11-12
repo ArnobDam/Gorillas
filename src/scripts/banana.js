@@ -18,21 +18,27 @@ function Banana(object) {
 
     this.radius = 15;
 
-
 }
 
 Banana.prototype.draw = function (context) {
+    context.clearRect(0, 0, canvasWidth, canvasHeight);
 
     context.fillStyle = this.color;
 
     context.beginPath();
     context.arc(this.pos[0], this.pos[1], this.radius, 0, 2 * Math.PI);
     context.fill();
-    // context.closePath();
+    context.closePath();
 
+    this.move();
+    let that = this;
+
+    window.requestAnimationFrame(function () {
+        that.draw(context);
+    });
 }
 
-Banana.prototype.move = function (context) {
+Banana.prototype.move = function () {
 
     this.gravityY += this.gravity;
 
