@@ -1,10 +1,19 @@
+// const canvasEle = document.getElementsByTagName("canvas")[0];
+// const canvasLeft = canvasEle.getBoundingClientRect().left;
+// const canvasRight = canvasEle.getBoundingClientRect().right;
+// const canvasTop = canvasEle.getBoundingClientRect().top;
+// const canvasBottom = canvasEle.getBoundingClientRect().bottom;
+
+canvasWidth = window.innerWidth * .65;
+canvasHeight = window.innerHeight * .65;
+
 function Banana() {
-    this.pos = [100, 300];
+
+    this.pos = [0 + canvasWidth/10, canvasHeight*(4/5)];
     this.radius = 15;
     this.color = '#F6BE00'; //yellow in hex 
-    // this.speed = speed;
-    // this.angle = angle;
-    this.vel = [1, -1]
+
+    this.vel = [1.5, -2]
     this.gravityY = 0;
     this.gravity = 0.0098;
 }

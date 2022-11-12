@@ -6,13 +6,15 @@
 // });
 
 
-const Banana = require("./scripts/banana.js");
-const banana = new Banana();
-// window.Banana = Banana;
+    const Banana = require("./scripts/banana.js");
+    const banana = new Banana();
+    // window.Banana = Banana;
 
 document.addEventListener("DOMContentLoaded", function () {
+    
+
     const canvasEle = document.getElementsByTagName("canvas")[0];
-    canvasEle.width = window.innerWidth * .66;
+    canvasEle.width = window.innerWidth * .65;
     canvasEle.height = window.innerHeight * .65;
 
     const context = canvasEle.getContext("2d");
