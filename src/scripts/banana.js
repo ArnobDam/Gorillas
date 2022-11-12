@@ -7,15 +7,18 @@
 canvasWidth = window.innerWidth * .65;
 canvasHeight = window.innerHeight * .65;
 
-function Banana() {
+function Banana(object) {
 
-    this.pos = [0 + canvasWidth/10, canvasHeight*(4/5)];
-    this.radius = 15;
-    this.color = '#F6BE00'; //yellow in hex 
+    this.pos = object.pos;
+    this.vel = object.vel;
+    this.color = object.color;
 
-    this.vel = [1.5, -2]
     this.gravityY = 0;
     this.gravity = 0.0098;
+
+    this.radius = 15;
+
+
 }
 
 Banana.prototype.draw = function (context) {
