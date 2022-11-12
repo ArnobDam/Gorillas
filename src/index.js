@@ -12,10 +12,14 @@ const banana = new Banana();
 
 document.addEventListener("DOMContentLoaded", function () {
     const canvasEle = document.getElementsByTagName("canvas")[0];
-    canvasEle.width = 500;
-    canvasEle.height = 500;
+    canvasEle.width = window.innerWidth * .66;
+    canvasEle.height = window.innerHeight * .65;
 
     const context = canvasEle.getContext("2d");
 
     banana.draw(context);
+    setInterval(function () {
+        banana.move(context);
+        banana.draw(context);
+    }, 10);
 })

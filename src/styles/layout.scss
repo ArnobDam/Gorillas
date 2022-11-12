@@ -6,23 +6,25 @@
 
 }
 
-#content {
-    width: 65%;
+// #content {
+//     width: 65%;
 
-}
+// }
 
 h1 {
     font-size: 50px;
     font-weight: bold;
     display: flex;
     justify-content: center;
-    margin-top: 50px;
+    margin-top: 25px;
+    color: green;
 }
 
 #instructions {
     margin-top: 15px;
     height: 90px;
-    border: 1px solid black;
+    border: 1px solid green;
+    color: green;
 }
 
 #game-window {

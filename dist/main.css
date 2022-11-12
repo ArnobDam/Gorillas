@@ -62,22 +62,20 @@ table {
   margin: auto;
 }
 
-#content {
-  width: 65%;
-}
-
 h1 {
   font-size: 50px;
   font-weight: bold;
   display: flex;
   justify-content: center;
-  margin-top: 50px;
+  margin-top: 25px;
+  color: green;
 }
 
 #instructions {
   margin-top: 15px;
   height: 90px;
-  border: 1px solid black;
+  border: 1px solid green;
+  color: green;
 }
 
 #game-window {
@@ -90,4 +88,9 @@ h1 {
   height: 200px;
   width: 50px;
   border: 1px solid black;
+}
+
+canvas {
+  border: 1px solid green;
+  border-top: 0px;
 }
