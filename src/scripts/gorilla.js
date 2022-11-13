@@ -14,7 +14,8 @@ Gorilla.prototype.draw = function (context) {
 
     context.fillStyle = this.color;
     context.beginPath();
-    context.rect(this.pos[0], this.pos[1], (canvasWidth / 10), (canvasHeight / 5));
+    context.rect(this.pos[0], this.pos[1], (canvasWidth) * (13/200), (canvasHeight) * (13/100));
+    // 21/320 = (3/40) * (7/8), 21/160 = (3/20) * (7/8)
     context.fill();
     context.closePath();
 }

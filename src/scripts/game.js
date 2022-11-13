@@ -22,7 +22,7 @@ const gorilla1 = new Gorilla({
 });
 
 const gorilla2 = new Gorilla({
-    pos: [canvasWidth * (17 / 20), canvasHeight * (4 / 5)],
+    pos: [canvasWidth * (19 / 20), canvasHeight * (4 / 5)],
     color: '#964B00'
 });
 
