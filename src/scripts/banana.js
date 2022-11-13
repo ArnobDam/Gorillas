@@ -4,8 +4,8 @@
 // const canvasTop = canvasEle.getBoundingClientRect().top;
 // const canvasBottom = canvasEle.getBoundingClientRect().bottom;
 
-canvasWidth = window.innerWidth * .65;
-canvasHeight = window.innerHeight * .65;
+let canvasWidth = window.innerWidth * .65;
+let canvasHeight = window.innerHeight * .65;
 
 function Banana(object) {
 
@@ -31,11 +31,15 @@ Banana.prototype.draw = function (context) {
     context.closePath();
 
     this.move();
+
     let that = this;
 
-    window.requestAnimationFrame(function () {
-        that.draw(context);
-    });
+    if (!this.outOfBounds()) {
+        window.requestAnimationFrame(function () {
+            that.draw(context);
+        });
+    }
+
 }
 
 Banana.prototype.move = function () {
@@ -46,5 +50,14 @@ Banana.prototype.move = function () {
     this.pos[1] += (this.vel[1] + this.gravityY);
 
 }
+
+Banana.prototype.outOfBounds = function () {
+    if (this.pos[0] > canvasWidth || this.pos[0] < 0 || this.pos[1] > canvasHeight || this.pos[1] < 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 
 module.exports = Banana;

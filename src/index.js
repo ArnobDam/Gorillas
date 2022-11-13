@@ -5,6 +5,9 @@
 //     new Example(main);
 // });
 
+let canvasWidth = window.innerWidth * .65;
+let canvasHeight = window.innerHeight * .65;
+
 const Banana = require("./scripts/banana.js");
 const banana1 = new Banana({
     pos: [canvasWidth / 10, canvasHeight * (4 / 5)],
@@ -18,6 +21,8 @@ const banana2 = new Banana({
 });
 // window.Banana = Banana;
 
+let turn = 2;
+
 document.addEventListener("DOMContentLoaded", function () {
 
     const canvasEle = document.getElementsByTagName("canvas")[0];
@@ -27,9 +32,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const context = canvasEle.getContext("2d");
 
-    banana1.draw(context);
-    banana2.draw(context);
-
+    // banana1.draw(context);
+    // banana2.draw(context);
 
     // setInterval(function () {
     //     context.clearRect(0, 0, canvasEle.width, canvasEle.height);
@@ -42,8 +46,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // }, 10);
 
     window.requestAnimationFrame(function () {
-        banana1.draw(context);
-
-        banana2.draw(context);
+        if (turn === 1) {
+            banana1.draw(context);
+        } else {
+            banana2.draw(context);
+        }
     })
 })
