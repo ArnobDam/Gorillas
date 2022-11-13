@@ -52,7 +52,7 @@ Banana.prototype.move = function () {
 }
 
 Banana.prototype.outOfBounds = function () {
-    if (this.pos[0] > canvasWidth || this.pos[0] < 0 || this.pos[1] > canvasHeight || this.pos[1] < 0) {
+    if (this.pos[0] > canvasWidth || this.pos[0] < 0 || this.pos[1] > canvasHeight) {
         return true;
     } else {
         return false;
