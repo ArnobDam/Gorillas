@@ -59,5 +59,32 @@ Banana.prototype.outOfBounds = function () {
     }
 }
 
+Banana.prototype.hasCollidedWithGorilla = function (gorilla) {
+    let xBanana = this.pos[0];
+    let yBanana = this.pos[1];
+    let radiusBanana = this.radius;
+
+    let xGorilla = gorilla.pos[0];
+    let yGorilla = gorilla.pos[1];
+
+    let xDiff = Math.abs(xBanana - xGorilla);
+    let yDiff = Math.abs(yBanana - yGorilla);
+
+    if (xDiff <= radiusBanana && yDiff <= radiusBanana) {
+        return true;
+    } else {
+        return false;
+    }
+
+}
+
+Banana.prototype.hasCollided = function (gorilla) {
+    if (this.outOfBounds() || this.hasCollidedWithGorilla(gorilla)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 
 module.exports = Banana;

@@ -8,17 +8,21 @@ const banana1 = new Banana({
     pos: [(canvasWidth) * (16.5 / 200), canvasHeight * (75 / 100)],
     //16.5 = gorilla1 starting position + half gorilla width
     //75 same as gorilla1 starting height
-    vel: [1.5, -2],
+    vel: [1.6, -2],
     color: '#F6BE00' //yellow in hex 
 });
+
 const banana2 = new Banana({
     pos: [canvasWidth * (183.5 / 200), canvasHeight * (75 / 100)],
     //183.5 = gorilla2 starting position + half gorilla width
     //75 same as gorilla2 starting height
-    vel: [-1.5, -2.5],
+    vel: [-1.6, -2],
     color: '#F67E80'
 });
+
 // window.Banana = Banana;
+
+
 
 const gorilla1 = new Gorilla({
     pos: [(canvasWidth) * (10 / 200), canvasHeight * (75 / 100)],
@@ -46,7 +50,7 @@ Game.prototype.draw = function (context) {
 
     if (this.turn === 1) {
 
-        if (!banana1.outOfBounds()) {
+        if (!banana1.hasCollided(gorilla2)) {
             banana1.draw(context);
         } else {
             this.turn = 2; //switch turn
@@ -58,7 +62,7 @@ Game.prototype.draw = function (context) {
 
     } else {
 
-        if (!banana2.outOfBounds()) {
+        if (!banana2.hasCollided(gorilla1)) {
             banana2.draw(context);
         } else {
             this.turn = 1; //switch turn
@@ -72,10 +76,6 @@ Game.prototype.draw = function (context) {
 }
 
 
-// Game.prototype.hasCollided = function () {
-//     if (turn === 1) {
 
-//     }
-// }
 
 module.exports = Game;
