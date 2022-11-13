@@ -17,12 +17,12 @@ const banana2 = new Banana({
 // window.Banana = Banana;
 
 const gorilla1 = new Gorilla({
-    pos: [canvasWidth / 20, canvasHeight * (4 / 5)],
+    pos: [(canvasWidth) * (10 / 200), canvasHeight * (75 / 100)],
     color: '#440000'
 });
 
 const gorilla2 = new Gorilla({
-    pos: [canvasWidth * (19 / 20), canvasHeight * (4 / 5)],
+    pos: [canvasWidth * (177 / 200), canvasHeight * (75 / 100)],
     color: '#964B00'
 });
 
