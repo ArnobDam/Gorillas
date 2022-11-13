@@ -18,7 +18,7 @@ const banana2 = new Banana({
 
 const gorilla1 = new Gorilla({
     pos: [canvasWidth / 20, canvasHeight * (4 / 5)],
-    color: '#000000'
+    color: '#330000'
 });
 
 const gorilla2 = new Gorilla({
@@ -26,15 +26,22 @@ const gorilla2 = new Gorilla({
     color: '#964B00'
 });
 
-this.turn = 1;
 
-function Game() { }
+
+
+function Game() {
+    this.turn = 1;
+}
 
 Game.prototype.draw = function (context) {
+
     context.clearRect(0, 0, canvasWidth, canvasHeight);
+
     gorilla1.draw(context);
     gorilla2.draw(context);
+
     if (this.turn === 1) {
+
         if (!banana1.outOfBounds()) {
             banana1.draw(context);
         } else {
@@ -43,7 +50,9 @@ Game.prototype.draw = function (context) {
             banana1.vel = [1.5, -2]; //reset player's banana vel
             banana1.gravityY = 0; //reset player's banana gravity
         }
+
     } else {
+
         if (!banana2.outOfBounds()) {
             banana2.draw(context);
         } else {
@@ -52,6 +61,7 @@ Game.prototype.draw = function (context) {
             banana2.vel = [-1.5, -2.5] //reset opponent's banana vel
             banana2.gravityY = 0; //reset opponent's banana gravity
         }
+
     }
 }
 
