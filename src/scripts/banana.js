@@ -64,13 +64,13 @@ Banana.prototype.hasCollidedWithGorilla = function (gorilla) {
     let yBanana = this.pos[1];
     let radiusBanana = this.radius;
 
-    let xGorilla = gorilla.pos[0];
-    let yGorilla = gorilla.pos[1];
+    let xGorilla = gorilla.center[0];
+    let yGorilla = gorilla.center[1];
 
     let xDiff = Math.abs(xBanana - xGorilla);
     let yDiff = Math.abs(yBanana - yGorilla);
 
-    if (xDiff <= radiusBanana && yDiff <= radiusBanana) {
+    if (xDiff <= (radiusBanana + (gorilla.width/2)) && yDiff <= (radiusBanana + (gorilla.height/2))) {
         return true;
     } else {
         return false;

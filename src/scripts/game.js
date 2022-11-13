@@ -4,8 +4,29 @@ const Gorilla = require("./gorilla.js");
 let canvasWidth = window.innerWidth * .65;
 let canvasHeight = window.innerHeight * .65;
 
+//gorillas initialization
+
+let xgorilla1 = (canvasWidth / 15) * (3 / 4)
+
+const gorilla1 = new Gorilla({
+    pos: [xgorilla1, canvasHeight * (75 / 100)],
+    color: '#440000'
+});
+
+let xgorilla2 = (canvasWidth - ((canvasWidth / 15) * (3 / 4)) - (canvasWidth / 15))
+
+const gorilla2 = new Gorilla({
+    pos: [xgorilla2, canvasHeight * (75 / 100)],
+    //old xpos = canvasWidth * (177 / 200)
+    color: '#964B00'
+});
+
+
+
+//bananas initialization
+
 const banana1 = new Banana({
-    pos: [(canvasWidth) * (16.5 / 200), canvasHeight * (75 / 100)],
+    pos: [xgorilla1 + ((canvasWidth / 15) * (1 / 2)), canvasHeight * (75 / 100)],
     //16.5 = gorilla1 starting position + half gorilla width
     //75 same as gorilla1 starting height
     vel: [1.6, -2],
@@ -13,7 +34,7 @@ const banana1 = new Banana({
 });
 
 const banana2 = new Banana({
-    pos: [canvasWidth * (183.5 / 200), canvasHeight * (75 / 100)],
+    pos: [xgorilla2 + ((canvasWidth / 15) * (1 / 2)), canvasHeight * (75 / 100)],
     //183.5 = gorilla2 starting position + half gorilla width
     //75 same as gorilla2 starting height
     vel: [-1.6, -2],
@@ -21,19 +42,6 @@ const banana2 = new Banana({
 });
 
 // window.Banana = Banana;
-
-
-
-const gorilla1 = new Gorilla({
-    pos: [(canvasWidth) * (10 / 200), canvasHeight * (75 / 100)],
-    color: '#440000'
-});
-
-const gorilla2 = new Gorilla({
-    pos: [canvasWidth * (177 / 200), canvasHeight * (75 / 100)],
-    color: '#964B00'
-});
-
 
 
 
@@ -54,7 +62,7 @@ Game.prototype.draw = function (context) {
             banana1.draw(context);
         } else {
             this.turn = 2; //switch turn
-            banana1.pos = [(canvasWidth) * (16.5 / 200), canvasHeight * (75 / 100)];
+            banana1.pos = [xgorilla1 + ((canvasWidth / 15) * (1 / 2)), canvasHeight * (75 / 100)];
             //reset player's banana pos
             banana1.vel = [1.5, -2]; //reset player's banana vel
             banana1.gravityY = 0; //reset player's banana gravity
@@ -66,7 +74,7 @@ Game.prototype.draw = function (context) {
             banana2.draw(context);
         } else {
             this.turn = 1; //switch turn
-            banana2.pos = [canvasWidth * (183.5 / 200), canvasHeight * (75 / 100)];
+            banana2.pos = [xgorilla2 + ((canvasWidth / 15) * (1 / 2)), canvasHeight * (75 / 100)];
             //reset opponent's banana pos
             banana2.vel = [-1.5, -2.5] //reset opponent's banana vel
             banana2.gravityY = 0; //reset opponent's banana gravity
