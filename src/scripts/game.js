@@ -83,7 +83,4 @@ Game.prototype.draw = function (context) {
     }
 }
 
-
-
-
 module.exports = Game;
