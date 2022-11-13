@@ -21,7 +21,7 @@ function Banana(object) {
 }
 
 Banana.prototype.draw = function (context) {
-    context.clearRect(0, 0, canvasWidth, canvasHeight);
+    // context.clearRect(0, 0, canvasWidth, canvasHeight);
 
     context.fillStyle = this.color;
 
@@ -34,11 +34,11 @@ Banana.prototype.draw = function (context) {
 
     let that = this;
 
-    if (!this.outOfBounds()) {
-        window.requestAnimationFrame(function () {
-            that.draw(context);
-        });
-    }
+    // if (!this.outOfBounds()) {
+    //     window.requestAnimationFrame(function () {
+    //         that.draw(context);
+    //     });
+    // }
 
 }
 

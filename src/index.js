@@ -5,6 +5,9 @@
 //     new Example(main);
 // });
 
+const Game = require("./scripts/game.js");
+const GameView = require("./scripts/game_view.js");
+
 let canvasWidth = window.innerWidth * .65;
 let canvasHeight = window.innerHeight * .65;
 
@@ -44,8 +47,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const context = canvasEle.getContext("2d");
 
-    gorilla1.draw(context);
-    gorilla2.draw(context);
+    const game = new Game();
+    const gameView = new GameView(context, game);
+    gameView.animate();
+
+    // gorilla1.draw(context);
+    // gorilla2.draw(context);
 
     // banana1.draw(context);
     // banana2.draw(context);
@@ -66,11 +73,12 @@ document.addEventListener("DOMContentLoaded", function () {
     //     banana2.draw(context);
     // }, 10);
 
-    window.requestAnimationFrame(function () {
-        if (turn === 1) {
-            banana1.draw(context);
-        } else {
-            banana2.draw(context);
-        }
-    })
+    // window.requestAnimationFrame(function () {
+    //     if (turn === 1) {
+    //         banana1.draw(context);
+    //     } else {
+    //         banana2.draw(context);
+    //     }
+    // })
 })
+
