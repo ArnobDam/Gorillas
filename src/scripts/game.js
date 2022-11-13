@@ -18,7 +18,7 @@ const banana2 = new Banana({
 
 const gorilla1 = new Gorilla({
     pos: [canvasWidth / 20, canvasHeight * (4 / 5)],
-    color: '#330000'
+    color: '#440000'
 });
 
 const gorilla2 = new Gorilla({
