@@ -17,9 +17,8 @@ function calculateRadians(degree) {
 
 
 LineGauge.prototype.draw = function (context) {
-
-    degree++;
-    if (degree > 360) degree = 0;
+    // degree++;
+    // if (degree > 360) degree = 0;
 
     context.fillStyle = '#A020F0';
 
@@ -27,9 +26,9 @@ LineGauge.prototype.draw = function (context) {
 
     context.beginPath();
 
-    context.translate(this.pos[0], this.pos[1]);
-    context.rotate(-1 * calculateRadians(degree));
-    context.translate(-1 * this.pos[0], -1 * this.pos[1]);
+
+    this.rotate(context);
+
 
     context.rect(this.pos[0], this.pos[1], this.width, this.height);
 
@@ -39,8 +38,25 @@ LineGauge.prototype.draw = function (context) {
     context.restore();
 }
 
+let rotatingUp;
 LineGauge.prototype.rotate = function (context) {
-    context.rotate(45 * Math.PI / 180);
+    context.translate(this.pos[0], this.pos[1]);
+
+    if (degree === 90) {
+        rotatingUp = false;
+    } else if (degree === 0) {
+        rotatingUp = true;
+    }
+
+    if (rotatingUp) {
+        degree++;
+        context.rotate(-1 * calculateRadians(degree));
+    } else {
+        degree--;
+        context.rotate(-1 * calculateRadians(degree));
+    }
+
+    context.translate(-1 * this.pos[0], -1 * this.pos[1]);
 }
 
 
