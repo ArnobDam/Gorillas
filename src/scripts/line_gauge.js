@@ -28,6 +28,7 @@ LineGauge.prototype.draw = function (context) {
 
 
     this.rotate(context);
+    this.power(context);
 
 
     context.rect(this.pos[0], this.pos[1], this.width, this.height);
@@ -57,6 +58,23 @@ LineGauge.prototype.rotate = function (context) {
     }
 
     context.translate(-1 * this.pos[0], -1 * this.pos[1]);
+}
+
+let widthIncreasing;
+LineGauge.prototype.power = function (context) {
+    let originalWidth = (2 * (canvasWidth / 15));
+
+    if (this.width >= (2 * originalWidth)) {
+        widthIncreasing = false;
+    } else if (this.width <= originalWidth) {
+        widthIncreasing = true;
+    }
+
+    if (widthIncreasing) {
+        this.width += (originalWidth / 90);
+    } else {
+        this.width -= (originalWidth / 90);
+    }
 }
 
 
