@@ -96,10 +96,12 @@ Game.prototype.draw = function (context) {
 
     context.clearRect(0, 0, canvasWidth, canvasHeight);
 
+    lineGauge.draw(context);
+
     gorilla1.draw(context);
+
     gorilla2.draw(context);
 
-    lineGauge.draw(context);
 
     allTrees.forEach((tree) => tree.draw(context))
 
