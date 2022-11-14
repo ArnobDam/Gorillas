@@ -15,7 +15,8 @@ function calculateRadians(degree) {
     return radians;
 }
 
-
+let spacebarPressed;
+let spacebarCounter = 0;
 LineGauge.prototype.draw = function (context) {
     // degree++;
     // if (degree > 360) degree = 0;
@@ -26,9 +27,33 @@ LineGauge.prototype.draw = function (context) {
 
     context.beginPath();
 
+    let that = this;
 
-    this.rotate(context);
-    this.power(context);
+
+    document.body.onkeyup = function (event) {
+        if (event.keyCode === 32 ||
+            event.code === "Space" ||
+            event.key === " ") {
+            spacebarPressed = true;
+        } else {
+            spacebarPressed = false;
+        }
+    }
+
+    if (spacebarPressed && spacebarCounter === 0) {
+        console.log("yay")
+        spacebarCounter++;
+        spacebarPressed = false;
+    } else if (spacebarPressed && spacebarCounter === 1) {
+        console.log("yayyay")
+        spacebarCounter = 0;
+        spacebarPressed = false;
+    } else {
+        console.log("nah")
+    }
+
+    // this.rotate(context);
+    // this.power(context);
 
 
     context.rect(this.pos[0], this.pos[1], this.width, this.height);
@@ -71,9 +96,9 @@ LineGauge.prototype.power = function (context) {
     }
 
     if (widthIncreasing) {
-        this.width += (originalWidth / 90);
+        this.width += (originalWidth / 100);
     } else {
-        this.width -= (originalWidth / 90);
+        this.width -= (originalWidth / 100);
     }
 }
 
