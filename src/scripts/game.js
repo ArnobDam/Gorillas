@@ -66,6 +66,7 @@ const banana1 = new Banana({
     pos: [gorilla1.center[0], gorilla1.center[1]],
 
     vel: [1.6, -1],
+    // vel: [0, -100],
     color: '#F6BE00' //yellow in hex 
 });
 
@@ -96,7 +97,7 @@ Game.prototype.draw = function (context) {
 
     context.clearRect(0, 0, canvasWidth, canvasHeight);
 
-    lineGauge.draw(context);
+    // lineGauge.draw(context);
 
     gorilla1.draw(context);
 
@@ -106,7 +107,7 @@ Game.prototype.draw = function (context) {
 
     if (this.turn === 1) {
 
-        // lineGauge.draw(context);
+        lineGauge.draw(context);
 
         gorilla1.draw(context);
 
@@ -133,6 +134,11 @@ Game.prototype.draw = function (context) {
             //reset opponent's banana pos
             banana2.vel = [-1.5, -2.5] //reset opponent's banana vel
             banana2.gravityY = 0; //reset opponent's banana gravity
+
+            lineGauge.degree = 0;
+            let originalWidth = (2 * (canvasWidth / 15));
+            lineGauge.width = originalWidth;
+            lineGauge.spacebarCounter = 0;
         }
 
     }

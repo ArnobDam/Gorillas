@@ -5,9 +5,11 @@ function LineGauge(object) {
     this.pos = object.pos;
     this.width = (2 * (canvasWidth / 15));
     this.height = (2 * (canvasWidth / 150))
+    this.degree = 0;
+    this.spacebarCounter = 0;
 }
 
-let degree = 0;
+
 let originalWidth = (2 * (canvasWidth / 15));
 
 function calculateRadians(degree) {
@@ -16,7 +18,7 @@ function calculateRadians(degree) {
 }
 
 let spacebarPressed;
-let spacebarCounter = 0;
+
 LineGauge.prototype.draw = function (context) {
     // degree++;
     // if (degree > 360) degree = 0;
@@ -39,27 +41,33 @@ LineGauge.prototype.draw = function (context) {
         }
     }
 
-    if (spacebarPressed && spacebarCounter === 0) {
+    if (spacebarPressed && this.spacebarCounter === 0) {
         console.log("yay")
-        spacebarCounter++;
+        this.spacebarCounter++;
         spacebarPressed = false;
-    } else if (spacebarPressed && spacebarCounter === 1) {
+    } else if (spacebarPressed && this.spacebarCounter === 1) {
         console.log("yayyay")
-        spacebarCounter = 0;
-        degree = 0;
-        this.width = originalWidth;
+        this.spacebarCounter++;
+
+        // this.degree = 0;
+        // this.width = originalWidth;
+
         spacebarPressed = false;
     } else {
         console.log("nah")
     }
 
-    if (spacebarCounter === 0) {
+    if (this.spacebarCounter === 0) {
         this.rotate(context);
-    } else if (spacebarCounter === 1) {
+    } else if (this.spacebarCounter === 1) {
         context.translate(this.pos[0], this.pos[1]);
-        context.rotate(-1 * calculateRadians(degree))
+        context.rotate(-1 * calculateRadians(this.degree))
         context.translate(-1 * this.pos[0], -1 * this.pos[1]);
         this.power(context);
+    } else {
+        context.translate(this.pos[0], this.pos[1]);
+        context.rotate(-1 * calculateRadians(this.degree))
+        context.translate(-1 * this.pos[0], -1 * this.pos[1]);
     }
 
     // this.rotate(context);
@@ -77,18 +85,18 @@ let rotatingUp;
 LineGauge.prototype.rotate = function (context) {
     context.translate(this.pos[0], this.pos[1]);
 
-    if (degree === 90) {
+    if (this.degree === 90) {
         rotatingUp = false;
-    } else if (degree === 0) {
+    } else if (this.degree === 0) {
         rotatingUp = true;
     }
 
     if (rotatingUp) {
-        degree++;
-        context.rotate(-1 * calculateRadians(degree));
+        this.degree++;
+        context.rotate(-1 * calculateRadians(this.degree));
     } else {
-        degree--;
-        context.rotate(-1 * calculateRadians(degree));
+        this.degree--;
+        context.rotate(-1 * calculateRadians(this.degree));
     }
 
     context.translate(-1 * this.pos[0], -1 * this.pos[1]);
