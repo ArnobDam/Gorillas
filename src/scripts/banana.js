@@ -60,6 +60,7 @@ Banana.prototype.outOfBounds = function () {
 }
 
 Banana.prototype.hasCollidedWithGorilla = function (gorilla) {
+
     let xBanana = this.pos[0];
     let yBanana = this.pos[1];
     let radiusBanana = this.radius;
@@ -70,7 +71,7 @@ Banana.prototype.hasCollidedWithGorilla = function (gorilla) {
     let xDiff = Math.abs(xBanana - xGorilla);
     let yDiff = Math.abs(yBanana - yGorilla);
 
-    if (xDiff <= (radiusBanana + (gorilla.width/2)) && yDiff <= (radiusBanana + (gorilla.height/2))) {
+    if (xDiff <= (radiusBanana + (gorilla.width / 2)) && yDiff <= (radiusBanana + (gorilla.height / 2))) {
         return true;
     } else {
         return false;
@@ -78,8 +79,36 @@ Banana.prototype.hasCollidedWithGorilla = function (gorilla) {
 
 }
 
-Banana.prototype.hasCollided = function (gorilla) {
-    if (this.outOfBounds() || this.hasCollidedWithGorilla(gorilla)) {
+Banana.prototype.hasCollidedWithTree = function (allTrees) {
+
+    let xBanana = this.pos[0];
+    let yBanana = this.pos[1];
+    let radiusBanana = this.radius;
+
+    let collided = false;
+
+    allTrees.forEach((tree) => {
+
+        let xTree = tree.center[0];
+        let yTree = tree.center[1];
+
+        let xDiff = Math.abs(xBanana - xTree);
+        let yDiff = Math.abs(yBanana - yTree);
+
+        let xCollDiff = (radiusBanana + (tree.width / 2));
+        let yCollDiff = (radiusBanana + (tree.height / 2));
+
+        if (xDiff <= xCollDiff && yDiff <= yCollDiff) {
+            collided = true;
+        }
+
+    });
+
+    return collided;
+}
+
+Banana.prototype.hasCollided = function (gorilla, allTrees) {
+    if (this.outOfBounds() || this.hasCollidedWithGorilla(gorilla) || this.hasCollidedWithTree(allTrees)) {
         return true;
     } else {
         return false;

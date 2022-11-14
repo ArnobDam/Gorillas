@@ -38,6 +38,7 @@ const fifthTree = new Tree({
 })
 allTrees.push(fifthTree);
 
+
 //gorillas initialization
 
 let xGorilla1 = (canvasWidth / 15) * (3 / 4)
@@ -63,7 +64,7 @@ const banana1 = new Banana({
     pos: [xGorilla1 + ((canvasWidth / 15) * (1 / 2)), canvasHeight * (75 / 100)],
     //16.5 = gorilla1 starting position + half gorilla width
     //75 same as gorilla1 starting height
-    vel: [1.6, -2],
+    vel: [1.6, -1],
     color: '#F6BE00' //yellow in hex 
 });
 
@@ -91,12 +92,10 @@ Game.prototype.draw = function (context) {
     gorilla2.draw(context);
 
     allTrees.forEach((tree) => tree.draw(context))
-    // firstTree.draw(context);
-    // fifthTree.draw(context);
 
     if (this.turn === 1) {
 
-        if (!banana1.hasCollided(gorilla2)) {
+        if (!banana1.hasCollided(gorilla2, allTrees)) {
             banana1.draw(context);
         } else {
             this.turn = 2; //switch turn
@@ -108,7 +107,7 @@ Game.prototype.draw = function (context) {
 
     } else {
 
-        if (!banana2.hasCollided(gorilla1)) {
+        if (!banana2.hasCollided(gorilla1, allTrees)) {
             banana2.draw(context);
         } else {
             this.turn = 1; //switch turn
