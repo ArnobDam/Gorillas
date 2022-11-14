@@ -1,6 +1,7 @@
 const Banana = require("./banana.js");
 const Gorilla = require("./gorilla.js");
 const Tree = require("./tree.js");
+const LineGauge = require("./line_gauge.js")
 
 let canvasWidth = window.innerWidth * .65;
 let canvasHeight = window.innerHeight * .65;
@@ -61,22 +62,29 @@ const gorilla2 = new Gorilla({
 //bananas initialization
 
 const banana1 = new Banana({
-    pos: [xGorilla1 + ((canvasWidth / 15) * (1 / 2)), canvasHeight * (75 / 100)],
-    //16.5 = gorilla1 starting position + half gorilla width
-    //75 same as gorilla1 starting height
+    // pos: [xGorilla1 + ((canvasWidth / 15) * (1 / 2)), canvasHeight * (75 / 100)],
+    pos: [gorilla1.center[0], gorilla1.center[1]],
+
     vel: [1.6, -1],
     color: '#F6BE00' //yellow in hex 
 });
 
 const banana2 = new Banana({
-    pos: [xGorilla2 + ((canvasWidth / 15) * (1 / 2)), canvasHeight * (75 / 100)],
-    //183.5 = gorilla2 starting position + half gorilla width
-    //75 same as gorilla2 starting height
+    // pos: [xGorilla2 + ((canvasWidth / 15) * (1 / 2)), canvasHeight * (75 / 100)],
+    pos: [gorilla2.center[0], gorilla2.center[1]],
+
+
     vel: [-1.6, -2],
     color: '#F67E80'
 });
 
 // window.Banana = Banana;
+
+
+//Line Gauge
+const lineGauge = new LineGauge({
+    pos: [gorilla1.center[0], gorilla1.center[1]]
+})
 
 
 
@@ -90,6 +98,8 @@ Game.prototype.draw = function (context) {
 
     gorilla1.draw(context);
     gorilla2.draw(context);
+
+    lineGauge.draw(context);
 
     allTrees.forEach((tree) => tree.draw(context))
 
