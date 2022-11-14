@@ -1,8 +1,22 @@
 const Banana = require("./banana.js");
 const Gorilla = require("./gorilla.js");
+const Tree = require("./tree.js");
 
 let canvasWidth = window.innerWidth * .65;
 let canvasHeight = window.innerHeight * .65;
+
+//trees initialization
+
+// Math.random()*(maximum-mininum)+minimum;
+let type1Height = (Math.random() * ((canvasHeight * (3 / 4)) - (canvasHeight * (1 / 2))) + (canvasHeight * (1 / 2)));
+let type2Height = (Math.random() * ((canvasHeight * (1 / 2)) - (canvasHeight * (1 / 4))) + (canvasHeight * (1 / 4)));
+let type3Height = (Math.random() * ((canvasHeight * (1 / 4)) - (canvasHeight * (3 / 16))) + (canvasHeight * (3 / 16)));
+
+const leftTree = new Tree({
+    type: 3
+})
+
+
 
 //gorillas initialization
 
@@ -55,6 +69,8 @@ Game.prototype.draw = function (context) {
 
     gorilla1.draw(context);
     gorilla2.draw(context);
+
+    leftTree.draw(context);
 
     if (this.turn === 1) {
 
