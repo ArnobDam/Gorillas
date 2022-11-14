@@ -8,6 +8,7 @@ function LineGauge(object) {
 }
 
 let degree = 0;
+let originalWidth = (2 * (canvasWidth / 15));
 
 function calculateRadians(degree) {
     let radians = degree * (Math.PI / 180);
@@ -45,6 +46,8 @@ LineGauge.prototype.draw = function (context) {
     } else if (spacebarPressed && spacebarCounter === 1) {
         console.log("yayyay")
         spacebarCounter = 0;
+        degree = 0;
+        this.width = originalWidth;
         spacebarPressed = false;
     } else {
         console.log("nah")
@@ -93,7 +96,6 @@ LineGauge.prototype.rotate = function (context) {
 
 let widthIncreasing;
 LineGauge.prototype.power = function (context) {
-    let originalWidth = (2 * (canvasWidth / 15));
 
     if (this.width >= (2 * originalWidth)) {
         widthIncreasing = false;
