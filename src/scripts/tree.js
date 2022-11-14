@@ -8,9 +8,11 @@ let canvasHeight = window.innerHeight * .65;
 //take another 14 away, 32/60
 //| | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | 
 
-let type1Height = (Math.random() * ((canvasHeight * (3 / 4)) - (canvasHeight * (1 / 2))) + (canvasHeight * (1 / 2)));
-let type2Height = (Math.random() * ((canvasHeight * (1 / 2)) - (canvasHeight * (1 / 4))) + (canvasHeight * (1 / 4)));
-let type3Height = (Math.random() * ((canvasHeight * (1 / 4)) - (canvasHeight * (3 / 16))) + (canvasHeight * (3 / 16)));
+//for reference
+// Math.random() * (max - min) + min;
+// let type1Height = (Math.random() * ((canvasHeight * (3 / 4)) - (canvasHeight * (1 / 2))) + (canvasHeight * (1 / 2)));
+// let type2Height = (Math.random() * ((canvasHeight * (1 / 2)) - (canvasHeight * (1 / 4))) + (canvasHeight * (1 / 4)));
+// let type3Height = (Math.random() * ((canvasHeight * (1 / 4)) - (canvasHeight * (1 / 8))) + (canvasHeight * (1 / 8)));
 
 function Tree(object) {
     // this.pos = object.pos;
@@ -21,14 +23,14 @@ function Tree(object) {
 
     // Math.random() * (max - min) + min;
     if (this.type === 1) {
-        this.height = type1Height;
+        this.height = (Math.random() * ((canvasHeight * (3 / 4)) - (canvasHeight * (1 / 2))) + (canvasHeight * (1 / 2)));
     } else if (this.type === 2) {
-        this.height = type2Height;
+        this.height = (Math.random() * ((canvasHeight * (1 / 2)) - (canvasHeight * (1 / 4))) + (canvasHeight * (1 / 4)));
     } else {
-        this.height = type3Height;
+        this.height = (Math.random() * ((canvasHeight * (1 / 4)) - (canvasHeight * (1 / 8))) + (canvasHeight * (1 / 8)));
     }
 
-    this.pos = [canvasWidth / 2, canvasHeight - this.height]
+    this.pos = [object.posX, canvasHeight - this.height]
 
     this.center = [
         this.pos[0] + (this.width / 2),

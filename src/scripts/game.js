@@ -6,31 +6,51 @@ let canvasWidth = window.innerWidth * .65;
 let canvasHeight = window.innerHeight * .65;
 
 //trees initialization
+let allTrees = [];
 
-// Math.random()*(maximum-mininum)+minimum;
-let type1Height = (Math.random() * ((canvasHeight * (3 / 4)) - (canvasHeight * (1 / 2))) + (canvasHeight * (1 / 2)));
-let type2Height = (Math.random() * ((canvasHeight * (1 / 2)) - (canvasHeight * (1 / 4))) + (canvasHeight * (1 / 4)));
-let type3Height = (Math.random() * ((canvasHeight * (1 / 4)) - (canvasHeight * (3 / 16))) + (canvasHeight * (3 / 16)));
-
-const leftTree = new Tree({
-    type: 3
+const firstTree = new Tree({
+    type: 3,
+    posX: (canvasWidth * (5 / 20))
 })
+allTrees.push(firstTree);
 
+const secondTree = new Tree({
+    type: 2,
+    posX: (canvasWidth * (7.25 / 20))
+})
+allTrees.push(secondTree);
 
+const thirdTree = new Tree({
+    type: 1,
+    posX: (canvasWidth * (9.50 / 20))
+})
+allTrees.push(thirdTree);
+
+const fourthTree = new Tree({
+    type: 2,
+    posX: (canvasWidth * (11.75 / 20))
+})
+allTrees.push(fourthTree);
+
+const fifthTree = new Tree({
+    type: 3,
+    posX: (canvasWidth * (14 / 20)) //(canvasWidth * (3 / 4)) - (canvasWidth / 20)
+})
+allTrees.push(fifthTree);
 
 //gorillas initialization
 
-let xgorilla1 = (canvasWidth / 15) * (3 / 4)
+let xGorilla1 = (canvasWidth / 15) * (3 / 4)
 
 const gorilla1 = new Gorilla({
-    pos: [xgorilla1, canvasHeight * (75 / 100)],
+    pos: [xGorilla1, canvasHeight * (75 / 100)],
     color: '#440000'
 });
 
-let xgorilla2 = (canvasWidth - ((canvasWidth / 15) * (3 / 4)) - (canvasWidth / 15))
+let xGorilla2 = (canvasWidth - ((canvasWidth / 15) * (3 / 4)) - (canvasWidth / 15))
 
 const gorilla2 = new Gorilla({
-    pos: [xgorilla2, canvasHeight * (75 / 100)],
+    pos: [xGorilla2, canvasHeight * (75 / 100)],
     //old xpos = canvasWidth * (177 / 200)
     color: '#964B00'
 });
@@ -40,7 +60,7 @@ const gorilla2 = new Gorilla({
 //bananas initialization
 
 const banana1 = new Banana({
-    pos: [xgorilla1 + ((canvasWidth / 15) * (1 / 2)), canvasHeight * (75 / 100)],
+    pos: [xGorilla1 + ((canvasWidth / 15) * (1 / 2)), canvasHeight * (75 / 100)],
     //16.5 = gorilla1 starting position + half gorilla width
     //75 same as gorilla1 starting height
     vel: [1.6, -2],
@@ -48,7 +68,7 @@ const banana1 = new Banana({
 });
 
 const banana2 = new Banana({
-    pos: [xgorilla2 + ((canvasWidth / 15) * (1 / 2)), canvasHeight * (75 / 100)],
+    pos: [xGorilla2 + ((canvasWidth / 15) * (1 / 2)), canvasHeight * (75 / 100)],
     //183.5 = gorilla2 starting position + half gorilla width
     //75 same as gorilla2 starting height
     vel: [-1.6, -2],
@@ -70,7 +90,9 @@ Game.prototype.draw = function (context) {
     gorilla1.draw(context);
     gorilla2.draw(context);
 
-    leftTree.draw(context);
+    allTrees.forEach((tree) => tree.draw(context))
+    // firstTree.draw(context);
+    // fifthTree.draw(context);
 
     if (this.turn === 1) {
 
@@ -78,7 +100,7 @@ Game.prototype.draw = function (context) {
             banana1.draw(context);
         } else {
             this.turn = 2; //switch turn
-            banana1.pos = [xgorilla1 + ((canvasWidth / 15) * (1 / 2)), canvasHeight * (75 / 100)];
+            banana1.pos = [xGorilla1 + ((canvasWidth / 15) * (1 / 2)), canvasHeight * (75 / 100)];
             //reset player's banana pos
             banana1.vel = [1.5, -2]; //reset player's banana vel
             banana1.gravityY = 0; //reset player's banana gravity
@@ -90,7 +112,7 @@ Game.prototype.draw = function (context) {
             banana2.draw(context);
         } else {
             this.turn = 1; //switch turn
-            banana2.pos = [xgorilla2 + ((canvasWidth / 15) * (1 / 2)), canvasHeight * (75 / 100)];
+            banana2.pos = [xGorilla2 + ((canvasWidth / 15) * (1 / 2)), canvasHeight * (75 / 100)];
             //reset opponent's banana pos
             banana2.vel = [-1.5, -2.5] //reset opponent's banana vel
             banana2.gravityY = 0; //reset opponent's banana gravity
