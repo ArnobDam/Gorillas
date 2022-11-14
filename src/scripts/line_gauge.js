@@ -7,7 +7,6 @@ function LineGauge(object) {
     this.height = (2 * (canvasWidth / 150))
 }
 
-
 let degree = 0;
 
 function calculateRadians(degree) {
@@ -28,7 +27,6 @@ LineGauge.prototype.draw = function (context) {
     context.beginPath();
 
     let that = this;
-
 
     document.body.onkeyup = function (event) {
         if (event.keyCode === 32 ||
@@ -52,9 +50,17 @@ LineGauge.prototype.draw = function (context) {
         console.log("nah")
     }
 
+    if (spacebarCounter === 0) {
+        this.rotate(context);
+    } else if (spacebarCounter === 1) {
+        context.translate(this.pos[0], this.pos[1]);
+        context.rotate(-1 * calculateRadians(degree))
+        context.translate(-1 * this.pos[0], -1 * this.pos[1]);
+        this.power(context);
+    }
+
     // this.rotate(context);
     // this.power(context);
-
 
     context.rect(this.pos[0], this.pos[1], this.width, this.height);
 
@@ -96,9 +102,9 @@ LineGauge.prototype.power = function (context) {
     }
 
     if (widthIncreasing) {
-        this.width += (originalWidth / 100);
+        this.width += (originalWidth / 90);
     } else {
-        this.width -= (originalWidth / 100);
+        this.width -= (originalWidth / 90);
     }
 }
 

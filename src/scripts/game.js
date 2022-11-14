@@ -102,10 +102,15 @@ Game.prototype.draw = function (context) {
 
     gorilla2.draw(context);
 
-
     allTrees.forEach((tree) => tree.draw(context))
 
     if (this.turn === 1) {
+
+        // lineGauge.draw(context);
+
+        gorilla1.draw(context);
+
+        gorilla2.draw(context);
 
         if (!banana1.hasCollided(gorilla2, allTrees)) {
             banana1.draw(context);
@@ -118,6 +123,7 @@ Game.prototype.draw = function (context) {
         }
 
     } else {
+
 
         if (!banana2.hasCollided(gorilla1, allTrees)) {
             banana2.draw(context);
