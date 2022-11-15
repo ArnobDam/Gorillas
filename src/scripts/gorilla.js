@@ -22,9 +22,19 @@ Gorilla.prototype.draw = function (context) {
     context.beginPath();
     // context.rect(this.pos[0], this.pos[1], this.width, this.width);
 
-    let img = document.getElementById("neutral");
+    if (Math.floor(TICK / 50) % 2 === 0) {
+        let img = document.getElementById("neutral");
 
-    context.drawImage(img, this.pos[0], this.pos[1], this.width, this.width);
+        context.drawImage(img, this.pos[0], this.pos[1], this.width, this.width);
+    } else {
+        let img = document.getElementById("neutral_happy");
+
+        context.drawImage(img, this.pos[0], this.pos[1], this.width, this.width);
+    }
+
+    // let img = document.getElementById("neutral");
+
+    // context.drawImage(img, this.pos[0], this.pos[1], this.width, this.width);
 
     context.fill();
     context.closePath();
