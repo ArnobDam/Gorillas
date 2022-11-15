@@ -46,7 +46,8 @@ let xGorilla1 = (canvasWidth / 15) * (3 / 4)
 
 const gorilla1 = new Gorilla({
     pos: [xGorilla1, canvasHeight * (75 / 100)],
-    color: '#440000'
+    color: '#440000',
+    player: "Y"
 });
 
 let xGorilla2 = (canvasWidth - ((canvasWidth / 15) * (3 / 4)) - (canvasWidth / 15))
@@ -54,7 +55,8 @@ let xGorilla2 = (canvasWidth - ((canvasWidth / 15) * (3 / 4)) - (canvasWidth / 1
 const gorilla2 = new Gorilla({
     pos: [xGorilla2, canvasHeight * (75 / 100)],
     //old xpos = canvasWidth * (177 / 200)
-    color: '#964B00'
+    color: '#964B00',
+    player: "N"
 });
 
 
