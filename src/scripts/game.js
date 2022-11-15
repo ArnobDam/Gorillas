@@ -155,7 +155,7 @@ Game.prototype.draw = function (context) {
             banana2.vel = [-5.5, -2.5] //reset opponent's banana vel
             banana2.gravityY = 0; //reset opponent's banana gravity
 
-            lineGauge.degree = 0;
+            lineGauge.degree = 1;
             let originalWidth = (2 * (canvasWidth / 15));
             lineGauge.width = originalWidth;
             lineGauge.spacebarCounter = 0;

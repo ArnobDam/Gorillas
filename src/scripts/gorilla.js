@@ -20,11 +20,16 @@ Gorilla.prototype.draw = function (context) {
 
     context.fillStyle = this.color;
     context.beginPath();
-    context.rect(this.pos[0], this.pos[1], (canvasWidth / 15), (canvasWidth / 15));
-    //(canvasWidth/15.405) ~= 40
-    // 21/320 = (3/40) * (7/8), 21/160 = (3/20) * (7/8)
+    // context.rect(this.pos[0], this.pos[1], this.width, this.width);
+
+    let img = document.getElementById("neutral");
+
+    context.drawImage(img, this.pos[0], this.pos[1], this.width, this.width);
+
     context.fill();
     context.closePath();
+
+
 }
 
 module.exports = Gorilla;

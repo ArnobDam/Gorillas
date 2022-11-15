@@ -40,7 +40,7 @@ function Tree(object) {
 
 Tree.prototype.draw = function (context) {
 
-    context.fillStyle = '#00A300';
+    context.fillStyle = '#006400';
     context.beginPath();
     context.rect(this.pos[0], this.pos[1], this.width, this.height);
     //(canvasWidth/15.405) ~= 40

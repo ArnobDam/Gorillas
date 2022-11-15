@@ -5,7 +5,7 @@ function LineGauge(object) {
     this.pos = object.pos;
     this.width = (2 * (canvasWidth / 15));
     this.height = (2 * (canvasWidth / 150))
-    this.degree = 0;
+    this.degree = 1;
     this.spacebarCounter = 0;
 
     this.vectorDegree;
