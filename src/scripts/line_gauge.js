@@ -3,7 +3,7 @@ let canvasHeight = window.innerHeight * .65;
 
 function LineGauge(object) {
     this.pos = object.pos;
-    this.width = (2 * (canvasWidth / 15));
+    this.width = ((canvasWidth / 15));
     this.height = (2 * (canvasWidth / 150))
     this.degree = 1;
     this.spacebarCounter = 0;
@@ -12,7 +12,7 @@ function LineGauge(object) {
     this.vectorWidth;
 }
 
-let originalWidth = (2 * (canvasWidth / 15));
+let originalWidth = ((canvasWidth / 15));
 
 function calculateRadians(degree) {
     let radians = degree * (Math.PI / 180);
@@ -70,7 +70,7 @@ LineGauge.prototype.draw = function (context) {
         context.translate(this.pos[0], this.pos[1]);
         context.rotate(-1 * calculateRadians(this.degree))
         context.translate(-1 * this.pos[0], -1 * this.pos[1]);
-        this.power(context);
+        this.power();
     } else {
         context.translate(this.pos[0], this.pos[1]);
         context.rotate(-1 * calculateRadians(this.degree))
@@ -80,9 +80,13 @@ LineGauge.prototype.draw = function (context) {
     // this.rotate(context);
     // this.power(context);
 
-    context.rect(this.pos[0], this.pos[1], this.width, this.height);
+    // context.rect(this.pos[0], this.pos[1], this.width, this.height);
 
-    context.fill();
+    let arrow_img = document.getElementById("arrow");
+
+    context.drawImage(arrow_img, this.pos[0], this.pos[1] - this.height, this.width, 2 * this.height);
+
+    // context.fill();
     context.closePath();
 
     context.restore();
@@ -110,7 +114,7 @@ LineGauge.prototype.rotate = function (context) {
 }
 
 let widthIncreasing;
-LineGauge.prototype.power = function (context) {
+LineGauge.prototype.power = function () {
 
     if (this.width >= (2 * originalWidth)) {
         widthIncreasing = false;
@@ -127,8 +131,8 @@ LineGauge.prototype.power = function (context) {
 
 LineGauge.prototype.getVector = function (degree, width) {
 
-    let opposite = (width * Math.sin(calculateRadians(degree))) / 50;
-    let adjacent = (width * Math.cos(calculateRadians(degree))) / 50;
+    let opposite = (width * Math.sin(calculateRadians(degree))) / 35;
+    let adjacent = (width * Math.cos(calculateRadians(degree))) / 35;
 
     console.log(adjacent, opposite);
     return [adjacent, (-1 * opposite)];

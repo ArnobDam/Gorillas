@@ -24,15 +24,18 @@ Gorilla.prototype.draw = function (context) {
     // context.rect(this.pos[0], this.pos[1], this.width, this.width);
 
     if (this.player === "Y") {
-        if (Math.floor(TICK / 100) % 2 === 0) {
-            let img = document.getElementById("neutral");
+        // if (Math.floor(TICK / 100) % 2 === 0) {
+        //     let img = document.getElementById("neutral");
 
-            context.drawImage(img, this.pos[0], this.pos[1], this.width, this.width);
-        } else {
-            let img = document.getElementById("neutral_happy");
+        //     context.drawImage(img, this.pos[0], this.pos[1], this.width, this.width);
+        // } else {
+        //     let img = document.getElementById("neutral_happy");
 
-            context.drawImage(img, this.pos[0], this.pos[1], this.width, this.width);
-        }
+        //     context.drawImage(img, this.pos[0], this.pos[1], this.width, this.width);
+        // }
+        let img = document.getElementById("neutral");
+
+        context.drawImage(img, this.pos[0], this.pos[1], this.width, this.width);
     } else {
         if (Math.floor(TICK / 30) % 3 === 0) {
             let img = document.getElementById("neutral");

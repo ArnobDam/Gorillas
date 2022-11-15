@@ -18,6 +18,14 @@ function Banana(object) {
 
     this.radius = 15;
 
+    this.degree = 1;
+    this.player = object.player;
+
+}
+
+function calculateRadians(degree) {
+    let radians = degree * (Math.PI / 180);
+    return radians;
 }
 
 Banana.prototype.draw = function (context) {
@@ -25,14 +33,39 @@ Banana.prototype.draw = function (context) {
 
     context.fillStyle = this.color;
 
+    context.save()
+
     context.beginPath();
+
     context.arc(this.pos[0], this.pos[1], this.radius, 0, 2 * Math.PI);
-    context.fill();
+
+    context.translate(this.pos[0], this.pos[1]);
+    if (this.player === "Y") {
+        context.rotate(calculateRadians(this.degree));
+        this.degree = this.degree + 3;
+    } else {
+        context.rotate(-1 * calculateRadians(this.degree));
+        this.degree = this.degree + 4;
+    }
+
+    context.translate(-1 * this.pos[0], -1 * this.pos[1]);
+
+
+
+    // context.fill();
+
+    let banana_img = document.getElementById("banana");
+
+    context.drawImage(banana_img, this.pos[0] - this.radius, this.pos[1] - this.radius, 2 * this.radius, 2 * this.radius);
+
     context.closePath();
+
+    context.restore();
+
 
     this.move();
 
-    let that = this;
+    // let that = this;
 
     // if (!this.outOfBounds()) {
     //     window.requestAnimationFrame(function () {

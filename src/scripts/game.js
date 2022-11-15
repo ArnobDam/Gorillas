@@ -69,7 +69,8 @@ const banana1 = new Banana({
 
     vel: [0, 0],
     // vel: [0, -100],
-    color: '#F6BE00' //yellow in hex 
+    color: '#F6BE00', //yellow in hex
+    player: "Y"
 });
 
 const banana2 = new Banana({
@@ -77,7 +78,8 @@ const banana2 = new Banana({
     pos: [gorilla2.center[0], gorilla2.center[1]],
 
     vel: [-1.6, -2],
-    color: '#F67E80'
+    color: '#F67E80',
+    player: "N"
 });
 
 // window.Banana = Banana;
@@ -133,32 +135,25 @@ Game.prototype.draw = function (context) {
                 banana1.gravityY = 0; //reset player's banana gravity
                 lineGauge.vectorDegree = undefined;
                 lineGauge.vectorWidth = undefined;
+
+                banana2.degree = 1;
             }
         }
-        // if (!banana1.hasCollided(gorilla2, allTrees)) {
-        //     banana1.draw(context);
-        // } else {
-        //     this.turn = 2; //switch turn
-        //     banana1.pos = [xGorilla1 + ((canvasWidth / 15) * (1 / 2)), canvasHeight * (75 / 100)];
-        //     //reset player's banana pos
-        //     banana1.vel = [1.5, -2]; //reset player's banana vel
-        //     banana1.gravityY = 0; //reset player's banana gravity
-        // }
 
     } else {
-
 
         if (!banana2.hasCollided(gorilla1, allTrees)) {
             banana2.draw(context);
         } else {
             this.turn = 1; //switch turn
-            banana2.pos = [gorilla2.center[0], gorilla2.center[1]];
-            //reset opponent's banana pos
+            banana2.pos = [gorilla2.center[0], gorilla2.center[1]]; //reset opponent's banana pos
             banana2.vel = [-5.5, -2.5] //reset opponent's banana vel
             banana2.gravityY = 0; //reset opponent's banana gravity
 
+            banana1.degree = 1;
+
             lineGauge.degree = 1;
-            let originalWidth = (2 * (canvasWidth / 15));
+            let originalWidth = ((canvasWidth / 15));
             lineGauge.width = originalWidth;
             lineGauge.spacebarCounter = 0;
         }
