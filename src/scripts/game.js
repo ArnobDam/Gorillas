@@ -122,7 +122,7 @@ Game.prototype.draw = function (context) {
             // console.log(banana1.vel)
 
             if (!banana1.hasCollided(gorilla2, allTrees)) {
-                console.log("a")
+                // console.log("test")
                 banana1.draw(context);
             } else {
                 this.turn = 2; //switch turn
