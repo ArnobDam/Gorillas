@@ -65,7 +65,7 @@ const banana1 = new Banana({
     // pos: [xGorilla1 + ((canvasWidth / 15) * (1 / 2)), canvasHeight * (75 / 100)],
     pos: [gorilla1.center[0], gorilla1.center[1]],
 
-    vel: [1.6, -1],
+    vel: [0, 0],
     // vel: [0, -100],
     color: '#F6BE00' //yellow in hex 
 });
@@ -73,7 +73,6 @@ const banana1 = new Banana({
 const banana2 = new Banana({
     // pos: [xGorilla2 + ((canvasWidth / 15) * (1 / 2)), canvasHeight * (75 / 100)],
     pos: [gorilla2.center[0], gorilla2.center[1]],
-
 
     vel: [-1.6, -2],
     color: '#F67E80'
@@ -113,15 +112,36 @@ Game.prototype.draw = function (context) {
 
         gorilla2.draw(context);
 
-        if (!banana1.hasCollided(gorilla2, allTrees)) {
-            banana1.draw(context);
-        } else {
-            this.turn = 2; //switch turn
-            banana1.pos = [xGorilla1 + ((canvasWidth / 15) * (1 / 2)), canvasHeight * (75 / 100)];
-            //reset player's banana pos
-            banana1.vel = [1.5, -2]; //reset player's banana vel
-            banana1.gravityY = 0; //reset player's banana gravity
+        if (lineGauge.vectorDegree && lineGauge.vectorWidth) {
+            // console.log(lineGauge.vectorDegree);
+            // console.log(lineGauge.vectorWidth);
+
+            banana1.vel = lineGauge.getVector(lineGauge.vectorDegree, lineGauge.vectorWidth);
+
+            // console.log(lineGauge.getVector(lineGauge.vectorDegree, lineGauge.vectorWidth));
+            // console.log(banana1.vel)
+
+            if (!banana1.hasCollided(gorilla2, allTrees)) {
+                console.log("a")
+                banana1.draw(context);
+            } else {
+                this.turn = 2; //switch turn
+                banana1.pos = [gorilla1.center[0], gorilla1.center[1]]; //reset player's banana pos
+                // banana1.vel = [1.5, -2]; //reset player's banana vel
+                banana1.gravityY = 0; //reset player's banana gravity
+                lineGauge.vectorDegree = undefined;
+                lineGauge.vectorWidth = undefined;
+            }
         }
+        // if (!banana1.hasCollided(gorilla2, allTrees)) {
+        //     banana1.draw(context);
+        // } else {
+        //     this.turn = 2; //switch turn
+        //     banana1.pos = [xGorilla1 + ((canvasWidth / 15) * (1 / 2)), canvasHeight * (75 / 100)];
+        //     //reset player's banana pos
+        //     banana1.vel = [1.5, -2]; //reset player's banana vel
+        //     banana1.gravityY = 0; //reset player's banana gravity
+        // }
 
     } else {
 
@@ -130,9 +150,9 @@ Game.prototype.draw = function (context) {
             banana2.draw(context);
         } else {
             this.turn = 1; //switch turn
-            banana2.pos = [xGorilla2 + ((canvasWidth / 15) * (1 / 2)), canvasHeight * (75 / 100)];
+            banana2.pos = [gorilla2.center[0], gorilla2.center[1]];
             //reset opponent's banana pos
-            banana2.vel = [-1.5, -2.5] //reset opponent's banana vel
+            banana2.vel = [-5.5, -2.5] //reset opponent's banana vel
             banana2.gravityY = 0; //reset opponent's banana gravity
 
             lineGauge.degree = 0;

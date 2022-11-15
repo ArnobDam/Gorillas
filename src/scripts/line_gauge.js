@@ -7,8 +7,10 @@ function LineGauge(object) {
     this.height = (2 * (canvasWidth / 150))
     this.degree = 0;
     this.spacebarCounter = 0;
-}
 
+    this.vectorDegree;
+    this.vectorWidth;
+}
 
 let originalWidth = (2 * (canvasWidth / 15));
 
@@ -45,6 +47,8 @@ LineGauge.prototype.draw = function (context) {
         console.log("yay")
         this.spacebarCounter++;
         spacebarPressed = false;
+
+        this.vectorDegree = this.degree;
     } else if (spacebarPressed && this.spacebarCounter === 1) {
         console.log("yayyay")
         this.spacebarCounter++;
@@ -53,6 +57,9 @@ LineGauge.prototype.draw = function (context) {
         // this.width = originalWidth;
 
         spacebarPressed = false;
+
+        this.vectorWidth = this.width;
+        this.getVector(this.vectorDegree, this.vectorWidth);
     } else {
         console.log("nah")
     }
@@ -85,9 +92,9 @@ let rotatingUp;
 LineGauge.prototype.rotate = function (context) {
     context.translate(this.pos[0], this.pos[1]);
 
-    if (this.degree === 90) {
+    if (this.degree >= 90) {
         rotatingUp = false;
-    } else if (this.degree === 0) {
+    } else if (this.degree <= 1) {
         rotatingUp = true;
     }
 
@@ -112,10 +119,19 @@ LineGauge.prototype.power = function (context) {
     }
 
     if (widthIncreasing) {
-        this.width += (originalWidth / 90);
+        this.width += (originalWidth / 100);
     } else {
-        this.width -= (originalWidth / 90);
+        this.width -= (originalWidth / 100);
     }
+}
+
+LineGauge.prototype.getVector = function (degree, width) {
+
+    let opposite = width * Math.sin(calculateRadians(degree));
+    let adjacent = width * Math.cos(calculateRadians(degree));
+
+    return [adjacent / 100, (-1 * opposite) / 100];
+
 }
 
 
