@@ -84,7 +84,7 @@ LineGauge.prototype.draw = function (context) {
 
     let arrow_img = document.getElementById("arrow");
 
-    context.drawImage(arrow_img, this.pos[0], this.pos[1] - this.height, this.width, 2 * this.height);
+    context.drawImage(arrow_img, this.pos[0], this.pos[1], this.width, 2 * this.height);
 
     // context.fill();
     context.closePath();

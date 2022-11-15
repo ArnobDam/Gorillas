@@ -50,7 +50,7 @@ const gorilla1 = new Gorilla({
     player: "Y"
 });
 
-let xGorilla2 = (canvasWidth - ((canvasWidth / 15) * (3 / 4)) - (canvasWidth / 15))
+let xGorilla2 = (canvasWidth - ((canvasWidth / 15) * (3 / 4)) - (1.25 * (canvasWidth / 15)))
 
 const gorilla2 = new Gorilla({
     pos: [xGorilla2, canvasHeight * (75 / 100)],

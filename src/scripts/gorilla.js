@@ -8,7 +8,7 @@ let canvasHeight = window.innerHeight * .65;
 function Gorilla(object) {
     this.pos = object.pos;
     this.color = object.color;
-    this.width = canvasWidth / 15;
+    this.width = 1.25 * (canvasWidth / 15);
     this.height = canvasWidth / 15;
     this.center = [
         this.pos[0] + (this.width / 2),
@@ -33,12 +33,12 @@ Gorilla.prototype.draw = function (context) {
 
         //     context.drawImage(img, this.pos[0], this.pos[1], this.width, this.width);
         // }
-        let img = document.getElementById("neutral");
+        let img = document.getElementById("neutral2");
 
         context.drawImage(img, this.pos[0], this.pos[1], this.width, this.width);
     } else {
         if (Math.floor(TICK / 30) % 3 === 0) {
-            let img = document.getElementById("neutral");
+            let img = document.getElementById("neutral2");
 
             context.drawImage(img, this.pos[0], this.pos[1], this.width, this.width);
         } else if (Math.floor(TICK / 30) % 3 === 1) {
