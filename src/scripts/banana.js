@@ -67,12 +67,6 @@ Banana.prototype.draw = function (context) {
 
     // let that = this;
 
-    // if (!this.outOfBounds()) {
-    //     window.requestAnimationFrame(function () {
-    //         that.draw(context);
-    //     });
-    // }
-
 }
 
 Banana.prototype.move = function () {

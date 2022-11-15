@@ -5,7 +5,7 @@
 let canvasWidth = window.innerWidth * .65;
 let canvasHeight = window.innerHeight * .65;
 
-function Gorilla(object) {
+function Gorilla(object, spriteObject) {
     this.pos = object.pos;
     this.color = object.color;
     this.width = 1.25 * (canvasWidth / 15);
@@ -15,41 +15,40 @@ function Gorilla(object) {
         this.pos[1] + (this.height / 2)
     ]
     this.player = object.player;
+
+    if (spriteObject.throwingImg) this.throwingImg = spriteObject.throwingImg;
 }
 
-Gorilla.prototype.draw = function (context) {
+Gorilla.prototype.draw = function (context, sprite = null) {
 
     context.fillStyle = this.color;
     context.beginPath();
     // context.rect(this.pos[0], this.pos[1], this.width, this.width);
 
     if (this.player === "Y") {
-        // if (Math.floor(TICK / 100) % 2 === 0) {
-        //     let img = document.getElementById("neutral");
-
-        //     context.drawImage(img, this.pos[0], this.pos[1], this.width, this.width);
-        // } else {
-        //     let img = document.getElementById("neutral_happy");
-
-        //     context.drawImage(img, this.pos[0], this.pos[1], this.width, this.width);
-        // }
-        let img = document.getElementById("neutral2");
+        let img;
+        if (sprite === "throw") {
+            img = this.throwingImg;
+        } else {
+            img = document.getElementById("neutral2");
+        }
 
         context.drawImage(img, this.pos[0], this.pos[1], this.width, this.width);
     } else {
-        if (Math.floor(TICK / 30) % 3 === 0) {
-            let img = document.getElementById("neutral2");
-
-            context.drawImage(img, this.pos[0], this.pos[1], this.width, this.width);
-        } else if (Math.floor(TICK / 30) % 3 === 1) {
-            let img = document.getElementById("jumping_right");
-
-            context.drawImage(img, this.pos[0], this.pos[1], this.width, this.width);
+        let img;
+        if (sprite === "throw") {
+            img = this.throwingImg;
         } else {
-            let img = document.getElementById("jumping_left");
-
-            context.drawImage(img, this.pos[0], this.pos[1], this.width, this.width);
+            if (Math.floor(TICK / 40) % 3 === 0) {
+                img = document.getElementById("neutral2");
+            } else if (Math.floor(TICK / 40) % 3 === 1) {
+                img = document.getElementById("jumping_right");
+            } else {
+                img = document.getElementById("jumping_left");
+            }
         }
+        context.drawImage(img, this.pos[0], this.pos[1], this.width, this.width);
+
     }
 
     // let img = document.getElementById("neutral");
@@ -58,7 +57,6 @@ Gorilla.prototype.draw = function (context) {
 
     context.fill();
     context.closePath();
-
 
 }
 

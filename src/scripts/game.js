@@ -42,13 +42,20 @@ allTrees.push(fifthTree);
 
 //gorillas initialization
 
+let playerThrowImg = document.getElementById("throw_player");
+let compThrowImg = document.getElementById("throw_comp");
+
+
 let xGorilla1 = (canvasWidth / 15) * (3 / 4)
 
 const gorilla1 = new Gorilla({
     pos: [xGorilla1, canvasHeight * (75 / 100)],
     color: '#440000',
     player: "Y"
-});
+},
+    {
+        throwingImg: playerThrowImg
+    });
 
 let xGorilla2 = (canvasWidth - ((canvasWidth / 15) * (3 / 4)) - (1.25 * (canvasWidth / 15)))
 
@@ -57,7 +64,10 @@ const gorilla2 = new Gorilla({
     //old xpos = canvasWidth * (177 / 200)
     color: '#964B00',
     player: "N"
-});
+},
+    {
+        throwingImg: compThrowImg
+    });
 
 
 
@@ -96,15 +106,16 @@ function Game() {
     this.turn = 1;
 }
 
+
 Game.prototype.draw = function (context) {
 
     context.clearRect(0, 0, canvasWidth, canvasHeight);
 
     // lineGauge.draw(context);
 
-    gorilla1.draw(context);
+    // gorilla1.draw(context);
 
-    gorilla2.draw(context);
+    // gorilla2.draw(context);
 
     allTrees.forEach((tree) => tree.draw(context))
 
@@ -112,9 +123,9 @@ Game.prototype.draw = function (context) {
 
         lineGauge.draw(context);
 
-        gorilla1.draw(context);
+        // gorilla1.draw(context);
 
-        gorilla2.draw(context);
+        // gorilla2.draw(context);
 
         if (lineGauge.vectorDegree && lineGauge.vectorWidth) {
             // console.log(lineGauge.vectorDegree);
@@ -122,13 +133,30 @@ Game.prototype.draw = function (context) {
 
             banana1.vel = lineGauge.getVector(lineGauge.vectorDegree, lineGauge.vectorWidth);
 
+            THROWING_TICK++;
+            // console.log(THROWING_TICK);
+
+            if (THROWING_TICK < 25) {
+                gorilla1.draw(context, "throw");
+                // console.log(THROWING_TICK);
+                // TICK = 0;
+            } else {
+                TICK = 0;
+                gorilla1.draw(context);
+            }
+
+            gorilla2.draw(context);
+
             // console.log(lineGauge.getVector(lineGauge.vectorDegree, lineGauge.vectorWidth));
             // console.log(banana1.vel)
 
             if (!banana1.hasCollided(gorilla2, allTrees)) {
                 // console.log("test")
                 banana1.draw(context);
+
             } else {
+                THROWING_TICK = 0;
+
                 this.turn = 2; //switch turn
                 banana1.pos = [gorilla1.center[0], gorilla1.center[1]]; //reset player's banana pos
                 // banana1.vel = [1.5, -2]; //reset player's banana vel
@@ -138,13 +166,33 @@ Game.prototype.draw = function (context) {
 
                 banana2.degree = 1;
             }
+        } else {
+            gorilla1.draw(context);
+
+            gorilla2.draw(context);
         }
 
     } else {
 
+        THROWING_TICK++;
+
+        // console.log(THROWING_TICK);
+
+        if (THROWING_TICK < 25) {
+            gorilla2.draw(context, "throw");
+        } else {
+            gorilla2.draw(context);
+        }
+
+        gorilla1.draw(context);
+
+        // gorilla2.draw(context);
+
         if (!banana2.hasCollided(gorilla1, allTrees)) {
             banana2.draw(context);
         } else {
+            THROWING_TICK = 0;
+
             this.turn = 1; //switch turn
             banana2.pos = [gorilla2.center[0], gorilla2.center[1]]; //reset opponent's banana pos
             banana2.vel = [-5.5, -2.5] //reset opponent's banana vel
