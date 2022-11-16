@@ -1,9 +1,15 @@
+body {
+    background-color: black;
+    
+}
+
 #content_and_links {
     display: flex;
     align-items: flex-end;
     justify-content: center;
     margin: auto;
 
+    
 }
 
 // #content {
@@ -12,19 +18,24 @@
 // }
 
 h1 {
+    font-family: 'Press Start 2P', cursive;
     font-size: 50px;
     font-weight: bold;
     display: flex;
     justify-content: center;
     margin-top: 25px;
-    color: green;
+    color: rgb(73, 251, 53); // rgb(73, 251, 53) neon green
 }
 
 #instructions {
     margin-top: 15px;
     height: 90px;
-    border: 1px solid green;
-    color: green;
+    border: 1px solid rgb(73, 251, 53);
+    color: rgb(73, 251, 53);
+
+    // word-wrap: break-word;
+    // white-space: pre-wrap;
+    // word-break: break-word;
 }
 
 #game-window {
