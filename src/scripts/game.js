@@ -111,61 +111,69 @@ Game.prototype.draw = function (context) {
 
     context.clearRect(0, 0, canvasWidth, canvasHeight);
 
-    // lineGauge.draw(context);
-
-    // gorilla1.draw(context);
-
-    // gorilla2.draw(context);
-
     allTrees.forEach((tree) => tree.draw(context))
 
+    
     if (this.turn === 1) {
 
         lineGauge.draw(context);
 
-        // gorilla1.draw(context);
-
-        // gorilla2.draw(context);
-
         if (lineGauge.vectorDegree && lineGauge.vectorWidth) {
-            // console.log(lineGauge.vectorDegree);
-            // console.log(lineGauge.vectorWidth);
 
             banana1.vel = lineGauge.getVector(lineGauge.vectorDegree, lineGauge.vectorWidth);
 
             THROWING_TICK++;
-            // console.log(THROWING_TICK);
 
             if (THROWING_TICK < 25) {
                 gorilla1.draw(context, "throw");
-                // console.log(THROWING_TICK);
-                // TICK = 0;
             } else {
-                // TICK = 0;
                 gorilla1.draw(context);
             }
 
             gorilla2.draw(context);
 
-            // console.log(lineGauge.getVector(lineGauge.vectorDegree, lineGauge.vectorWidth));
-            // console.log(banana1.vel)
-
             if (!banana1.hasCollided(gorilla2, allTrees)) {
-                // console.log("test")
                 banana1.draw(context);
 
             } else {
-                THROWING_TICK = 0;
 
-                this.turn = 2; //switch turn
-                TICK = 15; //gorilla2 is jumping immediately after ending throw (15 + 25 = 40)
-                banana1.pos = [gorilla1.center[0], gorilla1.center[1]]; //reset player's banana pos
-                // banana1.vel = [1.5, -2]; //reset player's banana vel
-                banana1.gravityY = 0; //reset player's banana gravity
-                lineGauge.vectorDegree = undefined;
-                lineGauge.vectorWidth = undefined;
+                if (banana1.hasCollidedWithGorilla(gorilla2)) {
+                    setTimeout(() => {
 
-                banana2.degree = 1;
+                        this.turn = 2; //switch turn
+                        
+                    }, 2000)
+
+
+                    THROWING_TICK = 0;
+
+                    // this.turn = 2; //switch turn
+                    TICK = 15; //gorilla2 is jumping immediately after ending throw (15 + 25 = 40)
+                    banana1.pos = [gorilla1.center[0], gorilla1.center[1]]; //reset player's banana pos
+                    // banana1.vel = [1.5, -2]; //reset player's banana vel
+                    banana1.gravityY = 0; //reset player's banana gravity
+                    lineGauge.vectorDegree = undefined;
+                    lineGauge.vectorWidth = undefined;
+
+                    banana2.degree = 1;
+                } else {
+                    setTimeout(() => {
+
+                        // this.turn = 2; //switch turn
+                        
+                    }, 2000)
+                    THROWING_TICK = 0;
+
+                    this.turn = 2; //switch turn
+                    TICK = 15; //gorilla2 is jumping immediately after ending throw (15 + 25 = 40)
+                    banana1.pos = [gorilla1.center[0], gorilla1.center[1]]; //reset player's banana pos
+                    // banana1.vel = [1.5, -2]; //reset player's banana vel
+                    banana1.gravityY = 0; //reset player's banana gravity
+                    lineGauge.vectorDegree = undefined;
+                    lineGauge.vectorWidth = undefined;
+
+                    banana2.degree = 1;
+                }
             }
         } else {
             gorilla1.draw(context);
