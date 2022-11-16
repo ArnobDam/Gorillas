@@ -183,7 +183,7 @@ Game.prototype.draw = function (context) {
                     // THROWING_TICK = 0;
 
                     // this.turn = 2; //switch turn
-                    TICK = 15; //gorilla2 is jumping immediately after ending throw (15 + 25 = 40)
+                    // TICK = 15; //gorilla2 is jumping immediately after ending throw (15 + 25 = 40)
                     banana1.pos = [gorilla1.center[0], gorilla1.center[1]]; //reset player's banana pos
                     // banana1.vel = [1.5, -2]; //reset player's banana vel
                     banana1.gravityY = 0; //reset player's banana gravity

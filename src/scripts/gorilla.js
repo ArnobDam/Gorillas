@@ -33,12 +33,12 @@ Gorilla.prototype.draw = function (context, sprite = null) {
             img = this.throwingImg;
         } else if (sprite === "hit") {
             if (Math.floor(HIT_TICK / 5) % 2 === 0) {
-                img = document.getElementById("upside_down_right");
+                img = document.getElementById("upside_down_right_brown");
             } else {
-                img = document.getElementById("upside_down_left");
+                img = document.getElementById("upside_down_left_brown");
             }
         } else {
-            img = document.getElementById("neutral2");
+            img = document.getElementById("neutral2_brown");
         }
 
         context.drawImage(img, this.pos[0], this.pos[1], this.width, this.width);
