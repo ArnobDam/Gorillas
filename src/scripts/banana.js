@@ -16,7 +16,8 @@ function Banana(object) {
     this.gravityY = 0;
     this.gravity = 0.0098;
 
-    this.radius = 15;
+    // this.radius = 15;
+    this.radius = canvasWidth / 55.466666666;
 
     this.degree = 1;
     this.player = object.player;
