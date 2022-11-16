@@ -31,8 +31,6 @@ function Tree(object) {
     }
 
 
-
-
     this.center = [
         this.pos[0] + (this.width / 2),
         this.pos[1] + (this.height / 2)

@@ -39,6 +39,7 @@ const fifthTree = new Tree({
 })
 allTrees.push(fifthTree);
 
+let stump = document.getElementById("stump");
 
 //gorillas initialization
 
@@ -118,6 +119,11 @@ Game.prototype.draw = function (context) {
 
     allTrees.forEach((tree) => tree.draw(context))
 
+    context.drawImage(stump, gorilla1.pos[0] / 2, gorilla1.pos[1] + gorilla1.height,
+        gorilla1.width * 1.5, gorilla1.height);
+
+    context.drawImage(stump, gorilla2.pos[0] - (gorilla2.width / 4), gorilla2.pos[1] + gorilla2.height,
+        gorilla2.width * 1.5, gorilla2.height);
 
     if (this.turn === 1) {
 
