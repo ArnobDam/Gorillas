@@ -93,5 +93,6 @@ h1 {
 canvas {
   border: 1px solid green;
   border-top: 0px;
-  background-color: black;
+  background-image: url("../images/background1.jpg");
+  background-size: 100% 100%;
 }
