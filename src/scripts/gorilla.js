@@ -25,10 +25,18 @@ Gorilla.prototype.draw = function (context, sprite = null) {
     context.beginPath();
     // context.rect(this.pos[0], this.pos[1], this.width, this.width);
 
+    //sprite renderer
+
     if (this.player === "Y") {
         let img;
         if (sprite === "throw") {
             img = this.throwingImg;
+        } else if (sprite === "hit") {
+            if (Math.floor(HIT_TICK / 5) % 2 === 0) {
+                img = document.getElementById("upside_down_right");
+            } else {
+                img = document.getElementById("upside_down_left");
+            }
         } else {
             img = document.getElementById("neutral2");
         }
@@ -38,6 +46,12 @@ Gorilla.prototype.draw = function (context, sprite = null) {
         let img;
         if (sprite === "throw") {
             img = this.throwingImg;
+        } else if (sprite === "hit") {
+            if (Math.floor(HIT_TICK / 5) % 2 === 0) {
+                img = document.getElementById("upside_down_left");
+            } else {
+                img = document.getElementById("upside_down_right");
+            }
         } else {
             if (Math.floor(TICK / 40) % 3 === 0) {
                 img = document.getElementById("neutral2");

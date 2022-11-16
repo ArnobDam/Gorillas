@@ -44,6 +44,8 @@ allTrees.push(fifthTree);
 
 let playerThrowImg = document.getElementById("throw_player");
 let compThrowImg = document.getElementById("throw_comp");
+// let upsideDownLeftImg = document.getElementById("upside_down_left");
+// let upsideDownRightImg = document.getElementById("upside_down_right");
 
 
 let xGorilla1 = (canvasWidth / 15) * (3 / 4)
@@ -106,6 +108,9 @@ function Game() {
     this.turn = 1;
 }
 
+let hit = false;
+
+let finished = false;
 
 Game.prototype.draw = function (context) {
 
@@ -113,7 +118,7 @@ Game.prototype.draw = function (context) {
 
     allTrees.forEach((tree) => tree.draw(context))
 
-    
+
     if (this.turn === 1) {
 
         lineGauge.draw(context);
@@ -130,22 +135,34 @@ Game.prototype.draw = function (context) {
                 gorilla1.draw(context);
             }
 
+            // if (hit) {
+            //     gorilla2.draw(context, "hit");
+            // } else {
             gorilla2.draw(context);
+            // }
+
 
             if (!banana1.hasCollided(gorilla2, allTrees)) {
                 banana1.draw(context);
 
             } else {
 
+
+
                 if (banana1.hasCollidedWithGorilla(gorilla2)) {
+
                     setTimeout(() => {
 
+                        hit = false;
                         this.turn = 2; //switch turn
-                        
+                        HIT_TICK = 0;
+                        THROWING_TICK = 0;
+
                     }, 2000)
 
+                    hit = true;
 
-                    THROWING_TICK = 0;
+                    // THROWING_TICK = 0;
 
                     // this.turn = 2; //switch turn
                     TICK = 15; //gorilla2 is jumping immediately after ending throw (15 + 25 = 40)
@@ -159,12 +176,13 @@ Game.prototype.draw = function (context) {
                 } else {
                     setTimeout(() => {
 
-                        // this.turn = 2; //switch turn
-                        
-                    }, 2000)
-                    THROWING_TICK = 0;
+                        this.turn = 2; //switch turn
+                        THROWING_TICK = 0;
 
-                    this.turn = 2; //switch turn
+                    }, 2000)
+                    // THROWING_TICK = 0;
+
+                    // this.turn = 2; //switch turn
                     TICK = 15; //gorilla2 is jumping immediately after ending throw (15 + 25 = 40)
                     banana1.pos = [gorilla1.center[0], gorilla1.center[1]]; //reset player's banana pos
                     // banana1.vel = [1.5, -2]; //reset player's banana vel
@@ -178,7 +196,13 @@ Game.prototype.draw = function (context) {
         } else {
             gorilla1.draw(context);
 
-            gorilla2.draw(context);
+
+            if (hit) {
+                HIT_TICK++;
+                gorilla2.draw(context, "hit");
+            } else {
+                gorilla2.draw(context);
+            }
         }
 
     } else {
@@ -193,26 +217,92 @@ Game.prototype.draw = function (context) {
             gorilla2.draw(context);
         }
 
-        gorilla1.draw(context);
+
+        if (hit) {
+            HIT_TICK++;
+            gorilla1.draw(context, "hit");
+        } else {
+            gorilla1.draw(context);
+        }
+
+        // gorilla1.draw(context);
 
         // gorilla2.draw(context);
 
         if (!banana2.hasCollided(gorilla1, allTrees)) {
-            banana2.draw(context);
+            if (!finished) {
+                banana2.draw(context);
+            }
+
         } else {
-            THROWING_TICK = 0;
 
-            this.turn = 1; //switch turn
-            banana2.pos = [gorilla2.center[0], gorilla2.center[1]]; //reset opponent's banana pos
-            banana2.vel = [-5.5, -2.5] //reset opponent's banana vel
-            banana2.gravityY = 0; //reset opponent's banana gravity
+            finished = true;
+            if (banana2.hasCollidedWithGorilla(gorilla1)) {
 
-            banana1.degree = 1;
+                setTimeout(() => {
 
-            lineGauge.degree = 1;
-            let originalWidth = ((canvasWidth / 15));
-            lineGauge.width = originalWidth;
-            lineGauge.spacebarCounter = 0;
+                    hit = false;
+                    this.turn = 1; //switch turn
+                    HIT_TICK = 0;
+
+                    finished = false;
+                    THROWING_TICK = 0;
+
+                }, 2000)
+
+                // THROWING_TICK = 0;
+
+                hit = true;
+                // this.turn = 1; //switch turn
+                banana2.pos = [gorilla2.center[0], gorilla2.center[1]]; //reset opponent's banana pos
+                banana2.vel = [-5.5, -2.5] //reset opponent's banana vel
+                banana2.gravityY = 0; //reset opponent's banana gravity
+
+                banana1.degree = 1;
+
+                lineGauge.degree = 1;
+                let originalWidth = ((canvasWidth / 15));
+                lineGauge.width = originalWidth;
+                lineGauge.spacebarCounter = 0;
+            } else {
+
+                setTimeout(() => {
+
+                    this.turn = 1; //switch turn
+                    finished = false;
+                    THROWING_TICK = 0;
+
+                }, 2000)
+
+                // THROWING_TICK = 0;
+
+                // this.turn = 1; //switch turn
+                banana2.pos = [gorilla2.center[0], gorilla2.center[1]]; //reset opponent's banana pos
+                banana2.vel = [-5.5, -2.5] //reset opponent's banana vel
+                banana2.gravityY = 0; //reset opponent's banana gravity
+
+                banana1.degree = 1;
+
+                lineGauge.degree = 1;
+                let originalWidth = ((canvasWidth / 15));
+                lineGauge.width = originalWidth;
+                lineGauge.spacebarCounter = 0;
+            }
+
+
+            // THROWING_TICK = 0;
+
+            // this.turn = 1; //switch turn
+            // banana2.pos = [gorilla2.center[0], gorilla2.center[1]]; //reset opponent's banana pos
+            // banana2.vel = [-5.5, -2.5] //reset opponent's banana vel
+            // banana2.gravityY = 0; //reset opponent's banana gravity
+
+            // banana1.degree = 1;
+
+            // lineGauge.degree = 1;
+            // let originalWidth = ((canvasWidth / 15));
+            // lineGauge.width = originalWidth;
+            // lineGauge.spacebarCounter = 0;
         }
 
     }
