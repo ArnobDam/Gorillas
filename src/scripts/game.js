@@ -261,7 +261,10 @@ Game.prototype.draw = function (context) {
                 hit = true;
                 // this.turn = 1; //switch turn
                 banana2.pos = [gorilla2.center[0], gorilla2.center[1]]; //reset opponent's banana pos
+                // Math.random() * (max - min) + min;
+                // let xVel = Math.random() * ()
                 banana2.vel = [-5.5, -2.5] //reset opponent's banana vel
+
                 banana2.gravityY = 0; //reset opponent's banana gravity
 
                 banana1.degree = 1;
@@ -284,7 +287,13 @@ Game.prototype.draw = function (context) {
 
                 // this.turn = 1; //switch turn
                 banana2.pos = [gorilla2.center[0], gorilla2.center[1]]; //reset opponent's banana pos
-                banana2.vel = [-5.5, -2.5] //reset opponent's banana vel
+                // Math.random() * (max - min) + min;
+
+                //OPPNENT GORILLA AI
+                banana2.vel[0] = -1 * (Math.random() * (2.2 - 1.2) + 1.2); //reset opponent's banana vel
+                banana2.vel[1] = -1 * (Math.random() * (2.8 - 1.2) + 1.2); //reset opponent's banana vel
+                console.log(banana2.vel);
+                // banana2.vel = [-5.5, -2.5] //reset opponent's banana vel
                 banana2.gravityY = 0; //reset opponent's banana gravity
 
                 banana1.degree = 1;
