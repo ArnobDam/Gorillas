@@ -24,8 +24,10 @@ function Tree(object) {
         this.height = (Math.random() * ((canvasHeight * (1 / 4)) - (canvasHeight * (1 / 8))) + (canvasHeight * (1 / 8)));
     }
 
+    this.posX = object.posX;
+
     if (this.type === 1) {
-        this.pos = [object.posX, canvasHeight - this.height + 15]
+        this.pos = [object.posX, canvasHeight - this.height + 25]
     } else {
         this.pos = [object.posX, canvasHeight - this.height]
     }
@@ -45,9 +47,27 @@ Tree.prototype.draw = function (context) {
 
     let img;
     if (this.type === 1) {
-        img = document.getElementById("trees1");
+        if (Math.floor(TICK / 200) % 2 === 0) {
+            img = document.getElementById("trees1");
+        } else {
+            img = document.getElementById("trees1_mirrored");
+        }
+
     } else if (this.type === 2) {
-        img = document.getElementById("trees2");
+        if (this.posX === (canvasWidth * (7.25 / 20))) { //tree 2
+            if (Math.floor(TICK / 450) % 2 === 0) {
+                img = document.getElementById("trees2");
+            } else {
+                img = document.getElementById("trees2_mirrored");
+            }
+        } else { //tree 4
+            if (Math.floor(TICK / 550) % 2 === 0) {
+                img = document.getElementById("trees2");
+            } else {
+                img = document.getElementById("trees2_mirrored");
+            }
+        }
+
     } else {
         img = document.getElementById("trees3");
     }
