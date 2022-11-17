@@ -9,12 +9,11 @@ body {
     justify-content: center;
     margin: auto;
 
+    width: 65%;
 
 }
 
 #linkedin {
-    // display: flex;
-    // align-items:flex-start;
     width: 20px;
     height: 20px;
     margin-left: 20px;
@@ -51,15 +50,37 @@ h2 {
 }
 
 #instructions {
+    // display: flex;
+    // align-items: stretch;
+
     margin-top: 15px;
     height: 90px;
     border: 1px solid rgb(73, 251, 53);
     color: rgb(73, 251, 53);
+    // color: whitesmoke;
+    // color: azure;
+    // color: white;
 
     // word-wrap: break-word;
     // white-space: pre-wrap;
     // word-break: break-word;
+    font-size: 12px;
+    font-family: 'Press Start 2P', cursive;
+
+    text-align: left;
+
+    p {
+        margin: 8px;
+    }
 }
+
+span {
+    text-indent: 40px;
+}
+
+// #instructions:nth-child(odd) {
+//     margin-left: 10px;
+// }
 
 #game-window {
     height: 375px;
