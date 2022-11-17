@@ -51,9 +51,6 @@ LineGauge.prototype.draw = function (context) {
         // console.log("yayyay")
         this.spacebarCounter++;
 
-        // this.degree = 0;
-        // this.width = originalWidth;
-
         spacebarPressed = false;
 
         this.vectorWidth = this.width;
@@ -74,9 +71,6 @@ LineGauge.prototype.draw = function (context) {
         context.rotate(-1 * calculateRadians(this.degree))
         context.translate(-1 * this.pos[0], -1 * this.pos[1]);
     }
-
-    // this.rotate(context);
-    // this.power(context);
 
     // context.rect(this.pos[0], this.pos[1], this.width, this.height);
 

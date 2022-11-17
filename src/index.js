@@ -31,29 +31,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // banana1.draw(context);
     // banana2.draw(context);
-
-    // if (turn === 1) {
-    //     banana1.draw(context);
-    // } else {
-    //     banana2.draw(context);
-    // }
-
-    // setInterval(function () {
-    //     context.clearRect(0, 0, canvasEle.width, canvasEle.height);
-
-    //     banana1.move(context);
-    //     banana1.draw(context);
-
-    //     banana2.move(context);
-    //     banana2.draw(context);
-    // }, 10);
-
-    // window.requestAnimationFrame(function () {
-    //     if (turn === 1) {
-    //         banana1.draw(context);
-    //     } else {
-    //         banana2.draw(context);
-    //     }
-    // })
 })
 

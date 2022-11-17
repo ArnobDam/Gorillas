@@ -47,8 +47,6 @@ let stump = document.getElementById("stump");
 
 let playerThrowImg = document.getElementById("throw_player");
 let compThrowImg = document.getElementById("throw_comp");
-// let upsideDownLeftImg = document.getElementById("upside_down_left");
-// let upsideDownRightImg = document.getElementById("upside_down_right");
 
 
 let xGorilla1 = (canvasWidth / 15) * (3 / 4)
@@ -96,8 +94,6 @@ const banana2 = new Banana({
     color: '#F67E80',
     player: "N"
 });
-
-// window.Banana = Banana;
 
 
 //Line Gauge
@@ -152,12 +148,7 @@ Game.prototype.draw = function (context) {
                 gorilla1.draw(context);
             }
 
-            // if (hit) {
-            //     gorilla2.draw(context, "hit");
-            // } else {
             gorilla2.draw(context);
-            // }
-
 
             if (!banana1.hasCollided(gorilla2, allTrees)) {
                 banana1.draw(context);
@@ -261,10 +252,6 @@ Game.prototype.draw = function (context) {
         } else {
             gorilla1.draw(context);
         }
-
-        // gorilla1.draw(context);
-
-        // gorilla2.draw(context);
 
         if (!banana2.hasCollided(gorilla1, allTrees)) {
             if (!finished) {

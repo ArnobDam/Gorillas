@@ -1,9 +1,3 @@
-// const canvasEle = document.getElementsByTagName("canvas")[0];
-// const canvasLeft = canvasEle.getBoundingClientRect().left;
-// const canvasRight = canvasEle.getBoundingClientRect().right;
-// const canvasTop = canvasEle.getBoundingClientRect().top;
-// const canvasBottom = canvasEle.getBoundingClientRect().bottom;
-
 let canvasWidth = window.innerWidth * .65;
 let canvasHeight = window.innerHeight * .65;
 
