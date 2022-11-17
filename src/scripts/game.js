@@ -115,6 +115,8 @@ let hit = false;
 
 let finished = false;
 
+let finalTwoSecondsPlayerTurn;
+
 Game.prototype.draw = function (context) {
 
     context.clearRect(0, 0, canvasWidth, canvasHeight);
@@ -132,6 +134,13 @@ Game.prototype.draw = function (context) {
         lineGauge.draw(context);
 
         if (lineGauge.vectorDegree && lineGauge.vectorWidth) {
+
+            document.body.onkeyup = function (event) {   //disable spacebar
+                if (event.code === "Space" || event.key === " ") {
+                    return false;
+                }
+            }
+
 
             banana1.vel = lineGauge.getVector(lineGauge.vectorDegree, lineGauge.vectorWidth);
 
@@ -155,8 +164,6 @@ Game.prototype.draw = function (context) {
 
             } else {
 
-
-
                 if (banana1.hasCollidedWithGorilla(gorilla2)) {
 
                     setTimeout(() => {
@@ -166,6 +173,7 @@ Game.prototype.draw = function (context) {
                         HIT_TICK = 0;
                         THROWING_TICK = 0;
 
+                        finalTwoSecondsPlayerTurn = false;
                     }, 2000)
 
                     hit = true;
@@ -181,11 +189,16 @@ Game.prototype.draw = function (context) {
                     lineGauge.vectorWidth = undefined;
 
                     banana2.degree = 1;
+
+                    finalTwoSecondsPlayerTurn = true;
+
                 } else {
                     setTimeout(() => {
 
                         this.turn = 2; //switch turn
                         THROWING_TICK = 0;
+
+                        finalTwoSecondsPlayerTurn = false;
 
                     }, 2000)
                     // THROWING_TICK = 0;
@@ -199,6 +212,8 @@ Game.prototype.draw = function (context) {
                     lineGauge.vectorWidth = undefined;
 
                     banana2.degree = 1;
+
+                    finalTwoSecondsPlayerTurn = true;
                 }
             }
         } else {
@@ -211,10 +226,24 @@ Game.prototype.draw = function (context) {
             } else {
                 gorilla2.draw(context);
             }
+
+            if (finalTwoSecondsPlayerTurn) {
+                document.body.onkeyup = function (event) {   //disable spacebar
+                    if (event.code === "Space" || event.key === " ") {
+                        return false;
+                    }
+                }
+            }
+
         }
 
     } else {
 
+        document.body.onkeyup = function (event) {   //disable spacebar
+            if (event.code === "Space" || event.key === " ") {
+                return false;
+            }
+        }
         THROWING_TICK++;
 
         // console.log(THROWING_TICK);
@@ -306,20 +335,6 @@ Game.prototype.draw = function (context) {
                 lineGauge.spacebarCounter = 0;
             }
 
-
-            // THROWING_TICK = 0;
-
-            // this.turn = 1; //switch turn
-            // banana2.pos = [gorilla2.center[0], gorilla2.center[1]]; //reset opponent's banana pos
-            // banana2.vel = [-5.5, -2.5] //reset opponent's banana vel
-            // banana2.gravityY = 0; //reset opponent's banana gravity
-
-            // banana1.degree = 1;
-
-            // lineGauge.degree = 1;
-            // let originalWidth = ((canvasWidth / 15));
-            // lineGauge.width = originalWidth;
-            // lineGauge.spacebarCounter = 0;
         }
 
     }

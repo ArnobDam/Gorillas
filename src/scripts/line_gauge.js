@@ -22,8 +22,6 @@ function calculateRadians(degree) {
 let spacebarPressed;
 
 LineGauge.prototype.draw = function (context) {
-    // degree++;
-    // if (degree > 360) degree = 0;
 
     context.fillStyle = '#A020F0';
 
@@ -134,7 +132,7 @@ LineGauge.prototype.getVector = function (degree, width) {
     let opposite = (width * Math.sin(calculateRadians(degree))) / 35;
     let adjacent = (width * Math.cos(calculateRadians(degree))) / 35;
 
-    console.log(adjacent, opposite);
+    // console.log(adjacent, opposite);
     return [adjacent, (-1 * opposite)];
 
 }
