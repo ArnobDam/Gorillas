@@ -11,7 +11,7 @@ window.HIT_TICK = 0;
 
 GameView.prototype.animate = function animate() {
 
-    console.log(window.innerWidth);
+    // console.log(window.innerWidth);
 
     let canvasWidth = window.innerWidth * .65;
     let canvasHeight = window.innerHeight * .65;
@@ -25,7 +25,7 @@ GameView.prototype.animate = function animate() {
 
     let instructions = document.getElementById("instructions");
     let positionInfo = instructions.getBoundingClientRect();
-    console.log(positionInfo.width / positionInfo.height);
+    // console.log(positionInfo.width / positionInfo.height);
     instructions.style.fontSize = `${(positionInfo.width / positionInfo.height) / 0.755}px`;
     // }
 
