@@ -126,9 +126,7 @@ LineGauge.prototype.getVector = function (degree, width) {
     let opposite = (width * Math.sin(calculateRadians(degree))) / 35;
     let adjacent = (width * Math.cos(calculateRadians(degree))) / 35;
 
-    // console.log(adjacent, opposite);
     return [adjacent, (-1 * opposite)];
-
 }
 
 
