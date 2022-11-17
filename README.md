@@ -10,6 +10,8 @@ In Gorillas, users will be able to:
 
 1. Determine the angle of the banana thrown via a rotating line guage. Upon hitting the space bar once, the current angle of the gauge will be locked into place.
 
+![Rotation]('./images/rotation.gif')
+
 Rotation code:
 ```js
 function calculateRadians(degree) {
@@ -40,6 +42,8 @@ LineGauge.prototype.rotate = function (context) {
 }
 ```
 2. After locking the angle in place, the line gauge will then contiuosly increase and decrease in length. Upon hitting the space bar again, the power of the banana throw will llock in the gorilla will throw the banana!
+
+![Power]('./images/power.gif')
 
 Power scale code involving vectors & trigonometry, and the implementation of gravity into the banana's y-vector:
 ```js
@@ -118,7 +122,7 @@ In addition, this project includes:
 
 ## Wireframe:
 
-- [Wireframe Preview](https://wireframe.cc/pro/pp/89fcc9894600345)
+![Wireframe Preview](https://wireframe.cc/pro/pp/89fcc9894600345)
 
 ## Technologies & Libraries:
 
