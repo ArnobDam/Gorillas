@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const gameView = new GameView(context, game);
     gameView.animate();
 
+
     // gorilla1.draw(context);
     // gorilla2.draw(context);
 

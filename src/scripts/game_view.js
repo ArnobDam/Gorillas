@@ -21,6 +21,14 @@ GameView.prototype.animate = function animate() {
     canvasEle.width = canvasWidth;
     canvasEle.height = canvasHeight;
 
+    // window.onresize = function () {
+
+    let instructions = document.getElementById("instructions");
+    let positionInfo = instructions.getBoundingClientRect();
+    console.log(positionInfo.width / positionInfo.height);
+    instructions.style.fontSize = `${(positionInfo.width / positionInfo.height) / 0.755}px`;
+    // }
+
 
     this.game.draw(this.context);
 
