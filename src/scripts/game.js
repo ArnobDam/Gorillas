@@ -6,7 +6,7 @@ const LineGauge = require("./line_gauge.js")
 let canvasWidth = window.innerWidth * .65;
 let canvasHeight = window.innerHeight * .65;
 
-console.log(canvasWidth, canvasHeight);
+// console.log(canvasWidth, canvasHeight);
 
 //trees initialization
 let allTrees = [];
