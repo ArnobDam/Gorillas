@@ -1,24 +1,22 @@
 # Gorillas (JavaScript Project)
 
-## Background
-
-Hi! Welcome to Gorillas, my projectile motion game coded via Javascript. This game involves two rival gorillas. The goal of the game is to throw bananas and hit the other gorilla at the other end of the screen. One gorilla is controlled by the user and the other by the computer opponent / AI. The banana's physics follows projectile motion. The user decides the direction and speed of the banana thrown via two seperate gauges which appear before throwing. A jungle landscape is randomly generated between the two gorillas, and the user and AI gorilla have to throw the banana in a path avoid this landscape. Each time a gorilla is hit by a banana their lives decrease by one, and the game is concluded when a gorilla loses all their lives!
+Welcome to [Gorillas](https://arnobdam.github.io/Gorillas/), my projectile motion game coded via Javascript, HTML & CSS. Gorillas is a projectile motion game involving two rival gorillas throwing bananas at each other. One gorilla is controlled by the user and the other by the computer opponent / AI. The banana's path implements projectile motion physics, including vector math and trigonometry. This game was creating by combining my love of arcade game, physics and computer programming. I hope you enjoy playing!
 
 ## Functionality & MVPs
 
 In Gorillas, users will be able to:
 
-1. Determine the angle of the banana thrown via a line gauge which rotates back and forth between 0 and 90 degrees. Upon hitting the space bar / clicking the mouse, the current angle of the gauge will be locked into place.
-2. After locking the angle in place, a new line gauge appears which determines the speed of the banana. This line gauge continously decreases and increases in length, until the user once again hits the the space bar / clicks the mouse, this time locking the speed of the banana.
-4. The user throws the banana as to avoid the landscape generated between themselves and the rival gorilla. If the banana collides with any of the landscape, the landscape halts the banana's path the turn ends.
-5. The user competes against a rival AI gorilla, and the user and AI gorilla alternate turns throwing bananas at each other. The rival gorilla's angle and speed when throwing the banana is pseudo-randomly generated so the rival gorilla succeeds with their throw 10-20% of the time.
+1. Determine the angle of the banana thrown via a rotating line guage. Upon hitting the space bar once, the current angle of the gauge will be locked into place.
+2. After locking the angle in place, the line gauge will then contiuosly increase and decrease in length. Upon hitting the space bar again, the power of the banana throw will llock in the gorilla will throw the banana!
+
+3. Bananas are thrown needing to avoid the raondmly generated landscape generated between themselves and the rival gorilla. If the banana collides with any of the landscape, the game boundaries or the rival gorilla, the turn switches.
+4. The rival gorilla's AI involves pseudo-randomly generating x- and y-vectors which determing the angle and speed of their banana's throw. The AI determine that rival gorilla succeeds with their throw 10-15% of the time.
 
 In addition, this project will include:
 
 1. Instructions detailing how to play the game.
 2. Sprites animating the gorillas and bananas, as well as static sprites depicting the landscape, background & lives.
-3. Lives for each gorilla (if time permits), which decrease when hit with a banana.
-4. Increasing difficulty as the game persists (if time permits). If the user has more lives than the rival gorilla, the speed of the gauges will increase (making it more difficult to throw accurately) and/or the rival gorilla will become more accurate.
+3. An arcade-based CSS style, as well as an animated background in the gameview.
 
 ## Wireframe:
 
@@ -26,13 +24,11 @@ In addition, this project will include:
 
 ## Technologies & Libraries:
 
-This project will be implements with the following technologies:
-
 - Javascript
 - HTML
 - CSS
-
-The only other resources used are sprites imported from publicly available libraries (https://spritedatabase.net/ and https://www.spriters-resource.com/)
+- Canvas API
+- Publicly Available Sprite Libraries
 
 ## Implementation Timeline 
 
@@ -45,7 +41,6 @@ The only other resources used are sprites imported from publicly available libra
 - Wednesday: Create instructions, a game over page, and nice title logo. Update all graphics and add sprites.
 
 - Thursday: Complete anything missing from previous days' goals. If completed, add music and a mute button, lives, and funcionality to increase game difficulty (stated above) as the opponent's lives decrease.
-
 
 
 
