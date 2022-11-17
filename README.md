@@ -2,6 +2,8 @@
 
 Welcome to [Gorillas](https://arnobdam.github.io/Gorillas/), my projectile motion game coded via Javascript, HTML & CSS. Gorillas is a projectile motion game involving two rival gorillas throwing bananas at each other. One gorilla is controlled by the user and the other by the computer opponent / AI. The banana's path implements projectile motion physics, including vector math and trigonometry. This game was creating by combining my love of arcade game, physics and computer programming. I hope you enjoy playing!
 
+![Game]('./images/gamegif.gif')
+
 ## Functionality & MVPs
 
 In Gorillas, users will be able to:
@@ -75,28 +77,9 @@ Banana.prototype.move = function () {
 }
 ```
 3. Bananas are thrown needing to avoid the raondmly generated landscape generated between themselves and the rival gorilla. If the banana collides with any of the landscape, the game boundaries or the rival gorilla, the turn switches.
-Code for the banana colliding with the gorilla, landscape & moving out of bounds:
+
+Code for the banana colliding each tree in the landscape:
 ```js
-Banana.prototype.hasCollidedWithGorilla = function (gorilla) {
-
-    let xBanana = this.pos[0];
-    let yBanana = this.pos[1];
-    let radiusBanana = this.radius;
-
-    let xGorilla = gorilla.center[0];
-    let yGorilla = gorilla.center[1];
-
-    let xDiff = Math.abs(xBanana - xGorilla);
-    let yDiff = Math.abs(yBanana - yGorilla);
-
-    if (xDiff <= (radiusBanana + (gorilla.width / 2)) && yDiff <= (radiusBanana + (gorilla.height / 2))) {
-        return true;
-    } else {
-        return false;
-    }
-
-}
-
 Banana.prototype.hasCollidedWithTree = function (allTrees) {
 
     let xBanana = this.pos[0];
@@ -124,18 +107,10 @@ Banana.prototype.hasCollidedWithTree = function (allTrees) {
 
     return collided;
 }
-
-Banana.prototype.outOfBounds = function () {
-    if (this.pos[0] > canvasWidth || this.pos[0] < 0 || this.pos[1] > canvasHeight) {
-        return true;
-    } else {
-        return false;
-    }
-}
 ```
 4. The rival gorilla's AI involves pseudo-randomly generating x- and y-vectors which determing the angle and speed of their banana's throw. The AI determine that rival gorilla succeeds with their throw 10-15% of the time.
 
-In addition, this project will include:
+In addition, this project includes:
 
 1. Instructions detailing how to play the game.
 2. Sprites animating the gorillas and bananas, as well as static sprites depicting the landscape, background & lives.
