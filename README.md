@@ -2,7 +2,7 @@
 
 Welcome to [Gorillas](https://arnobdam.github.io/Gorillas/), my projectile motion game coded via Javascript, HTML & CSS. Gorillas is a projectile motion game involving two rival gorillas throwing bananas at each other. One gorilla is controlled by the user and the other by the computer opponent / AI. The banana's path implements projectile motion physics, including vector math and trigonometry. This game was creating by combining my love of arcade game, physics and computer programming. I hope you enjoy playing!
 
-![Game]('./images/gamegif.gif')
+![Game](./images/gamegif.gif)
 
 ## Functionality & MVPs
 
@@ -10,7 +10,7 @@ In Gorillas, users will be able to:
 
 1. Determine the angle of the banana thrown via a rotating line guage. Upon hitting the space bar once, the current angle of the gauge will be locked into place.
 
-![Rotation]('./images/rotation.gif')
+![Rotation](./images/rotation.gif)
 
 Rotation code:
 ```js
@@ -142,7 +142,7 @@ In addition, this project includes:
 
 - Wednesday: HTML & CSS day: Create dinstructions and imported arcade title font. Updated all graphics and added sprite animations. Inserted github and linkedin links.
 
-- Thursday morning: Styled CSS to illustrate retro arcade game design. Dynamically adjusted entire game page to resize based on current window size.
+- Thursday morning: Styled CSS to illustrate retro arcade game design. Dynamically adjusted all html divisions and text to resize based on current window size.
 
 
 
