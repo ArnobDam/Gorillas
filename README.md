@@ -43,7 +43,7 @@ LineGauge.prototype.rotate = function (context) {
 ```
 2. After locking the angle in place, the line gauge will then contiuosly increase and decrease in length. Upon hitting the space bar again, the power of the banana throw will llock in the gorilla will throw the banana!
 
-![Power]('./images/power.gif')
+![Power](./images/power.gif)
 
 Power scale code involving vectors & trigonometry, and the implementation of gravity into the banana's y-vector:
 ```js
