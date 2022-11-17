@@ -134,15 +134,15 @@ In addition, this project includes:
 
 ## Implementation Timeline 
 
-- Friday afternoon & weekend: Setup project, get webpack up and running. Create all necessary classes, including gorilla, banana, landscape/tree and possibly boundary. Create and load basic game page, including the two gorillas in their proper positions and randomly generate. Implement projectile motion code in the banana class. 
+- Friday afternoon & weekend: Setup project, got webpack up and running. Created all necessary classes, including gorilla, banana, landscape/tree, game and gameview. Created basic canvas shapes representing all the game objects needed and implemented into their proper locations on the canvas. Created the projectile motion code in the banana class. 
 
-- Monday: Create the two gauges for throwing the bananas. Hook up the banana to each gorillas.
+- Monday: Create the line guage. Spent the day implementing the rotation and power code. Hooked up the line guage to each gorillas. 
 
-- Tuesday: Create turns, with logic that switches turns when the banana collides with the landscape, boundary, or other banana.
+- Tuesday: Used trigonometry to set the banana velocity vector based on the line guage angle and length.Calibrated the velocity values to fit with the banana's projectile motion code. Fixed bugs.
 
-- Wednesday: Create instructions, a game over page, and nice title logo. Update all graphics and add sprites.
+- Wednesday: HTML & CSS day: Create dinstructions and imported arcade title font. Updated all graphics and added sprite animations. Inserted github and linkedin links.
 
-- Thursday: Complete anything missing from previous days' goals. If completed, add music and a mute button, lives, and funcionality to increase game difficulty (stated above) as the opponent's lives decrease.
+- Thursday morning: Styled CSS to illustrate retro arcade game design. Dynamically adjusted entire game page to resize based on current window size.
 
 
 
