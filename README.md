@@ -122,7 +122,7 @@ In addition, this project includes:
 
 ## Wireframe:
 
-![Wireframe Preview](https://wireframe.cc/pro/pp/89fcc9894600345)
+![Wireframe Preview](./images/wireframe.PNG)
 
 ## Technologies & Libraries:
 
