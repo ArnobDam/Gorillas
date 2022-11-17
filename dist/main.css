@@ -66,14 +66,35 @@ body {
   margin: auto;
 }
 
+#linkedin {
+  width: 20px;
+  height: 20px;
+  margin-left: 20px;
+  margin-right: 15px;
+}
+
+#github {
+  width: 20px;
+  height: 20px;
+}
+
 h1 {
   font-family: "Press Start 2P", cursive;
-  font-size: 50px;
+  font-size: 45px;
   font-weight: bold;
   display: flex;
   justify-content: center;
   margin-top: 25px;
   color: rgb(73, 251, 53);
+}
+
+h2 {
+  font-family: "Press Start 2P", cursive;
+  margin-top: 10px;
+  color: rgb(73, 251, 53);
+  display: flex;
+  justify-content: center;
+  font-size: 18px;
 }
 
 #instructions {

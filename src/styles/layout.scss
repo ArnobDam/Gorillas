@@ -1,6 +1,6 @@
 body {
     background-color: black;
-    
+
 }
 
 #content_and_links {
@@ -9,7 +9,21 @@ body {
     justify-content: center;
     margin: auto;
 
-    
+
+}
+
+#linkedin {
+    // display: flex;
+    // align-items:flex-start;
+    width: 20px;
+    height: 20px;
+    margin-left: 20px;
+    margin-right: 15px;
+}
+
+#github {
+    width: 20px;
+    height: 20px;
 }
 
 // #content {
@@ -19,12 +33,21 @@ body {
 
 h1 {
     font-family: 'Press Start 2P', cursive;
-    font-size: 50px;
+    font-size: 45px;
     font-weight: bold;
     display: flex;
     justify-content: center;
     margin-top: 25px;
     color: rgb(73, 251, 53); // rgb(73, 251, 53) neon green
+}
+
+h2 {
+    font-family: 'Press Start 2P', cursive;
+    margin-top: 10px;
+    color: rgb(73, 251, 53);
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
 }
 
 #instructions {
